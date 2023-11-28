@@ -1,13 +1,16 @@
-ion-title {
-  cursor: pointer;
-}
 
-ion-searchbar {
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+height: 10vh;
 }
 
-ion-content {
-  padding: 10px;
+.container img {
+  width: 60%;
 }
 
-/* Add your custom styles */
+.container .icon {
+  width: 10%;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,19 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent  implements OnInit {
-  accountPages = [
-    {
-       title: 'Log In',
-       url: '/auth/login',
-       ionicIcon: 'log-in-outline'
-    },
-    {
-       title: 'Sign Up',
-       url: '/auth/signup',
-       ionicIcon: 'person-add-outline'
-    }
-  ]
-  constructor() { }
+
 
   ngOnInit() {}
 
