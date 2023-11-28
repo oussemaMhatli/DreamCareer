@@ -1,0 +1,255 @@
+
+body{
+  background-color: gray;
+}
+@media only screen and (max-width: 576px) {
+  form {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  form {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  form {
+    margin-top: 20px;
+  }
+}
+
+ion-button{
+  color:#00D5FA
+}
+.custom-input {
+  --placeholder-color: #E5E5E5;
+}
+
+.col{
+width: 100%;
+max-width: none;
+height: 70%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.card
+{
+height: 100%;
+width: 100%;
+max-width: none;
+}
+.content
+{
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+ align-items: center;
+  --ion-background-color: #EEEDED;
+}
+.form
+{
+width: 100%; height: 100%;
+--ion-background-color: #FFFFFF;
+
+}
+
+
+ion-label{
+  --color: red;
+  opacity: 1;
+}
+
+
+.is-invalid {
+  border: 1px solid red !important;
+  background-color: #ffeeee;
+  color: red;
+}
+.is-valid{
+  border: 1px solid !important;
+  background-color:rgb(217, 246, 217);
+  border-color: green !important;
+}
+ion-input {
+  font-size: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .error {
+    font-size: 8px;
+    color: red;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .error {
+    font-size: 12px;
+    color: red;
+  }
+}
+.iontoast{
+  .toast-message{
+      --background:white !important;
+      --color:black !important;
+  }
+  .toast-container
+  {
+      --background:white !important;
+      --color:black !important;
+  }
+}
+
+
+/*
+.iphone-13-14-1 {
+  position: relative;
+  background-color: #00CDE1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-1-icon,
+.image-2-icon {
+  position: absolute;
+  top: 107px;
+  left: 120px;
+  width: 270px;
+  height: 116px;
+  object-fit: cover;
+}
+
+.image-2-icon {
+  top: 24px;
+  left: 0;
+  width: 226px;
+  height: 283px;
+}
+
+.image-3 {
+  text-decoration: none;
+  position: absolute;
+  top: 612px;
+  left: 162px;
+  width: 66px;
+  height: 22px;
+  background-image: url(../../../../assets/img/image-3@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.image-4-icon {
+  position: absolute;
+  top: 791px;
+  left: 133px;
+  width: 124px;
+  height: 26px;
+  object-fit: cover;
+}
+
+.image-5,
+.image-6 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 532px;
+  left: 70px;
+  width: 250px;
+  height: 80px;
+  background-image: url(../../../../assets/img/image5@2x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.image-6 {
+  top: 563px;
+  left: 170px;
+  width: 51px;
+  height: 22px;
+  background-image: url(../../../../assets/img/image6@2x.png);
+}
+
+.image-7-icon {
+  position: absolute;
+  top: 353px;
+  left: 27px;
+  width: 336px;
+  height: 219px;
+  object-fit: cover;
+}
+
+.image-10-icon,
+.image-11-icon,
+.image-8-icon,
+.image-9-icon {
+  position: absolute;
+  top: 403px;
+  left: 67px;
+  width: 257px;
+  height: 43px;
+  object-fit: cover;
+}
+
+.image-10-icon,
+.image-11-icon,
+.image-9-icon {
+  top: 463px;
+}
+
+.image-10-icon,
+.image-11-icon {
+  top: 413px;
+  left: 155px;
+  width: 80px;
+  height: 24px;
+}
+
+.image-11-icon {
+  top: 473px;
+  left: 158px;
+  width: 75px;
+}
+
+.iphone-13-14-1-child,
+.iphone-13-14-1-item {
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 408px;
+  left: 84px;
+  background: linear-gradient(#d9f7fa, #d9f7fa),
+    linear-gradient(#d9f7fa, #d9f7fa), #d9f7fa;
+  width: 224px;
+  height: 33px;
+}
+
+.iphone-13-14-1-item {
+  top: 468px;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-1-icon,
+  .image-2-icon {
+    top: 20px;
+    left: 20px;
+    width: 80%;
+    height: auto;
+  }
+
+  .image-2-icon {
+    top: 50px;
+    left: 10px;
+    width: 70%;
+    height: auto;
+  }
+
+
+*/

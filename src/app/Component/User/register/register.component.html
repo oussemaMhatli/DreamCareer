@@ -1,0 +1,71 @@
+
+<ion-content padding>
+
+  <div id="logo" padding text-center>
+    <img src="./assets/img/logo.png">
+  </div>
+
+  <div padding>
+    <ion-segment  color="light">
+      <ion-segment-button value="signin">
+        Sign In
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        Sign Up
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div>
+    <form  >
+
+          <ion-input type="email"  name="email"></ion-input>
+
+
+
+          <ion-input type="password"  name="password"></ion-input>
+
+
+        <div padding text-center>
+          <button ion-button round color="light" icon-right>
+            signIn <ion-icon name="log-in"></ion-icon>
+          </button>
+        </div>
+
+
+    </form>
+
+    <form  >
+      <ion-label>username</ion-label>
+          <ion-input type="text"  name="username"></ion-input>
+
+
+      <ion-label float>fullname</ion-label>
+          <ion-input type="text"  name="fullname"></ion-input>
+
+
+
+          <ion-label float>Email</ion-label>
+          <ion-input type="email" name="email"></ion-input>
+
+
+          <ion-label float>Password</ion-label>
+          <ion-input type="password"  name="password"></ion-input>
+
+
+
+          <ion-label float>Retrypassword</ion-label>
+          <ion-input type="password"  name="password"></ion-input>
+
+
+        <div padding text-center>
+          <button ion-button round color="light" icon-right>
+            signup <ion-icon name="person-add"></ion-icon>
+          </button>
+        </div>
+
+
+    </form>
+
+  </div>
+</ion-content>

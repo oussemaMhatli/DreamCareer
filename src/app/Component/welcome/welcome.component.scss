@@ -1,0 +1,60 @@
+@keyframes roll-in-left {
+  0% {
+    transform: translateX(-50px) rotate(-540deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+.iphone-13-14-1-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 844px;
+}
+.image-1-icon2 {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 584px;
+  flex-shrink: 0;
+  object-fit: cover;
+  opacity: 0;
+}
+.image-1-icon2.animate {
+  animation: 1s ease 0s 1 normal forwards roll-in-left;
+}
+.frame {
+  position: absolute;
+  top: 14vh;
+  left: -182px;
+  width: 536px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* src/app/app.component.scss */
+.iphone-13-14-12 {
+  position: relative;
+  background-color: #00CDE1;
+  width: 100%;
+  height: 100%; /* Cover the entire viewport height */
+  overflow: hidden;
+}
+
+*
+{
+  margin: 0;
+  line-height: normal;
+  ;
+}
+:root {
+  /* Colors */
+  --color-darkturquoise: #00cde1;
+}
