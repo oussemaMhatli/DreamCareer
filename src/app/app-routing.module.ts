@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Component/User/login/login.component';
 import { RegisterComponent } from './Component/User/register/register.component';
 import { WelcomeComponent } from './Component/welcome/welcome.component';
+import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'wl',
+    component: WelcomPageComponent,
   },
   {
     path: 'signup',
@@ -26,6 +31,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+
 ];
 @NgModule({
   imports: [

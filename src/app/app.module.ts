@@ -14,7 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageModule } from './pages/home/home.module';
 import { WelcomeComponent } from './Component/welcome/welcome.component';
-import { ScrollService } from './services/scroll.service';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ScrollService } from './services/scroll.service';
     LoginComponent,
     RegisterComponent,
     WelcomeComponent,
+    WelcomPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +34,13 @@ import { ScrollService } from './services/scroll.service';
     HttpClientModule,
      ToastrModule.forRoot(),
      BrowserAnimationsModule,
-     HomePageModule
+     HomePageModule,
+     IonicStorageModule.forRoot(),
+
 
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
-  ,    
+  ,
 }],
   bootstrap: [AppComponent],
 })

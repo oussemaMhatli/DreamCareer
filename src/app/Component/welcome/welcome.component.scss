@@ -1,60 +1,36 @@
-@keyframes roll-in-left {
-  0% {
-    transform: translateX(-50px) rotate(-540deg);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
-}
-.iphone-13-14-1-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 844px;
-}
-.image-1-icon2 {
-  align-self: stretch;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  height: 584px;
-  flex-shrink: 0;
-  object-fit: cover;
-  opacity: 0;
-}
-.image-1-icon2.animate {
-  animation: 1s ease 0s 1 normal forwards roll-in-left;
-}
-.frame {
-  position: absolute;
-  top: 14vh;
-  left: -182px;
-  width: 536px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 /* src/app/app.component.scss */
+
 .iphone-13-14-12 {
-  position: relative;
   background-color: #00CDE1;
   width: 100%;
-  height: 100%; /* Cover the entire viewport height */
+  height: 100vh; /* Use 100vh to cover the entire viewport height */
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center content vertically */
 }
 
-*
-{
-  margin: 0;
-  line-height: normal;
-  ;
+.a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center content horizontally */
 }
-:root {
-  /* Colors */
-  --color-darkturquoise: #00cde1;
+
+.frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-right: 19vh;
+}
+
+.animated-img {
+  width: 20vh;
+  height: 20vh;
+  margin-top: 20vh;
+}
+
+.image-1-icon2 {
+  width: 50vh;
+  height: 50vh;
 }

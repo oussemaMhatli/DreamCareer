@@ -1,38 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>loginscreen</ion-title> -->
+  </ion-toolbar>
+  <ion-buttons slot="start">
+  <ion-back-button defaulthref="login" text=""></ion-back-button>
+  </ion-buttons>
+</ion-header>
+<div class="im">
 
-<ion-content class="ion-padding content">
-  <ion-grid style="height: 100%;">
-    <ion-row style="height: 100%;" class="mt-2">
-      <ion-col class="col mt-5">
-        <ion-card class="card">
-          <h1 class="ion-text-center mt-3" style="color:#00D5FA">Dream Career</h1>
-          <ion-card-content>
-            <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-              <ion-item>
-                <ion-label position="floating"><span style="color:#999">Username</span></ion-label>
-                <ion-input type="email" formControlName="username" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating"><span style="color:#999">Password</span></ion-label>
-                <ion-input type="password" formControlName="password" required #passwordInput></ion-input>
+</div>
+<ion-content>
+    <ion-card class="ion-no-margin">
+      <ion-card-content>
 
-              </ion-item>
-              <div *ngIf="submitted && loginForm.controls['password'].errors" class="error">Password is invalid. It must have at least 1 uppercase letter, 1 number, and be at least 6 characters long.</div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="wrapform">
+         <ion-item>
+          <ion-icon name="mail-outline"></ion-icon>
 
-              <ion-button expand="full" type="submit" color="primary" style="--ion-color-primary: #00D5FA;" class="mt-5">
-                <ion-spinner *ngIf="loading"></ion-spinner>
-                <span *ngIf="!loading">Login</span>
-              </ion-button>
+            <ion-input type="text" name="email" formControlName="username"  placeholder="Email" [ngClass]="{'is-invalid': submitted && loginForm.controls['username'].errors ,'is-valid': submitted && !loginForm.controls['username'].errors}">
+           </ion-input>
+           </ion-item>
+           <div>
 
-              <p class="link-info mt-3" (click)="register()" >
-                <a>Don't have an account? Sign Up here.</a>
-              </p>
-            </form>
+           </div>
+
+           <ion-item>
+            <ion-icon name="lock-closed"></ion-icon>
+
+             <ion-input type="password" name="password" formControlName="password"  placeholder="**************" [ngClass]="{'is-invalid': submitted && loginForm.controls['password'].errors ,'is-valid': submitted && !loginForm.controls['password'].errors}">
+             </ion-input>
+             </ion-item>
 
 
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </div>
+        <!---
+         <div class="password_forgot">
+            <ion-button fill="clear" class="ion-no-padding">ForgotPasword?</ion-button>
+         </div>
+         --->
+         <div class="sign-btn-wrap">
+          <ion-button  size="small" fill="solid"
+          type="submit"
+          shape="round"
+           class="sign-btn"
+           [disabled]="loading"
+           >
+           <ion-spinner *ngIf="loading" name="crescent" color="primary"></ion-spinner>
+
+           <span *ngIf="!loading">Login</span>  
+           </ion-button>
+
+          </div>
+
+           <div class="text-tag">
+           <span>Or via Social Media</span>
+           </div>
+
+           <div class="social-btns">
+               <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+             <ion-img src="assets/img/gmail.png" ></ion-img>
+               </ion-button>
+
+
+
+             </div>
+
+
+
+      </form>
+      </ion-card-content>
+
+
+    </ion-card>
+
+
+    <div class="ion-card-footer" (click)="register()">
+     <span >Don’t have an account?</span><button class="ion-no-padding" >Sign Up</button>
+      </div>
+
+
+
 </ion-content>
- 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private userService: UserService,
     private toastController: ToastController,
-    private router:Router) { }
+    private router:Router,
+    ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -35,30 +35,19 @@ export class LoginComponent implements OnInit {
   async login() {
 
     this.submitted = true;
-    /*
-    setTimeout(() => {
-      this.loading = false;
-      // Check your authentication logic here
-      if (this.loginForm.value.username === 'yourUsername' && this.loginForm.value.password === 'yourPassword') {
-        // Successful login
-        console.log('Login successful');
-        this.loginError = false;
-      } else {
-        // Failed login
-        console.log('Login failed');
-        this.loginError = true;
-      }
-    }, 2000); // Simulate a delay (replace with actual HTTP request)
 
-  */
     if (this.loginForm.valid) {
+
       this.loading = true;
     this.loginInput.login(this.loginForm.value.username, this.loginForm.value.password)
     console.log(this.loginInput, "avyero")
     this.userService.login(this.loginInput).subscribe( async (res:any)=>{
       console.log("res",res)
+      localStorage.setItem("user",res.token)
+      localStorage.setItem("id",res.user.id)
+
       await this.showToasts("Login successful",'success')
-      this.router.navigate(["home"])
+      this.router.navigate(["home/posts"])
 
     }, async (error:any)=>{
       console.log("error",error)

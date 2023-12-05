@@ -1,3 +1,11 @@
+ion-header {
+  border-bottom: 1px solid #fff;
+  height: 12vh;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  background-color: #00CDE1;
+}
 
 .container {
   display: flex;

@@ -1,5 +1,7 @@
 {
   "name": "dream-Career",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

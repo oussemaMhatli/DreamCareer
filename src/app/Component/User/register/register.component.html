@@ -1,71 +1,95 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>signup</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref="login" text="">
+      </ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
 
-<ion-content padding>
+</ion-header>
 
-  <div id="logo" padding text-center>
-    <img src="./assets/img/logo.png">
-  </div>
+<ion-content class="bg-color">
 
-  <div padding>
-    <ion-segment  color="light">
-      <ion-segment-button value="signin">
-        Sign In
-      </ion-segment-button>
-      <ion-segment-button value="signup">
-        Sign Up
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-
-  <div>
-    <form  >
-
-          <ion-input type="email"  name="email"></ion-input>
-
-
-
-          <ion-input type="password"  name="password"></ion-input>
-
-
-        <div padding text-center>
-          <button ion-button round color="light" icon-right>
-            signIn <ion-icon name="log-in"></ion-icon>
-          </button>
+    <ion-card class="ion-no-margin">
+      <div class="logo-container mt-2">
+        <img src="assets/img/blue-logo.png" >
         </div>
+        <ion-card-header style="margin-top: -40px;">
+            <ion-card-title>
+              Sign Up
+            </ion-card-title>
+            <ion-card-subtitle>
+              Create Your account by filling
+               up the form
+              </ion-card-subtitle>
+        </ion-card-header>
+             <form [formGroup]="registerForm"  (ngSubmit)="signup()" >
+       <ion-card-content>
+           <ion-item>
+            <ion-icon name="mail-outline" style="float: left;"></ion-icon>
+
+               <ion-input name="email" type="text" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid': submitted && registerForm.controls['email'].errors ,'is-valid': submitted && !registerForm.controls['email'].errors}" type="email" id="email" placeholder="Enter your email">
+                               </ion-input>
+
+           </ion-item>
+              <div>
+              </div>
+              <ion-item>
+                <ion-icon name="person-outline"></ion-icon>
+                   <ion-input name="username" type="text" placeholder="username Here" formControlName="username" [ngClass]="{'is-invalid': submitted && registerForm.controls['username'].errors ,'is-valid': submitted && !registerForm.controls['username'].errors}" >
+                   </ion-input>
+               </ion-item>
+           <ion-item>
+            <ion-icon name="briefcase-outline"></ion-icon>
+               <ion-input name="occupation" type="text" placeholder="Occupation Here" formControlName="occupation" [ngClass]="{'is-invalid': submitted && registerForm.controls['occupation'].errors ,'is-valid': submitted && !registerForm.controls['occupation'].errors}" >
+               </ion-input>
+           </ion-item>
+           <ion-item>
+            <ion-icon name="location-outline"></ion-icon>
+              <ion-input name="location" type="text" placeholder="Enter your Location " formControlName="location" [ngClass]="{'is-invalid': submitted && registerForm.controls['location'].errors ,'is-valid': submitted && !registerForm.controls['location'].errors}" >
+               </ion-input>
+           </ion-item>
+           <ion-item>
+            <ion-icon name="lock-closed" ></ion-icon>
+
+               <ion-input name="password" type="password" placeholder="************" formControlName="password" [ngClass]="{'is-invalid': submitted && registerForm.controls['password'].errors ,'is-valid': submitted && !registerForm.controls['password'].errors}" >
+               </ion-input>
+           </ion-item>
+           <div *ngIf="submitted && registerForm.controls['password'].errors" class="error">Password is invalid. It must have at least 1 uppercase letter, 1 number, and be at least 6 characters long.</div>
 
 
-    </form>
+           <div class="sign-btn-wrap">
+              <ion-button  shape="round"
+               type="submit"
+                fill="solid"
+                 class="sign-btn"
+                 [disabled]="loading"
 
-    <form  >
-      <ion-label>username</ion-label>
-          <ion-input type="text"  name="username"></ion-input>
+                 >
+                 <span *ngIf="!loading">
+                  SignUp
+                </span>
+                <ion-spinner *ngIf="loading" name="crescent" color="primary"></ion-spinner>
+                </ion-button>
+             </div>
 
+             <div class="text-tag">
+              <span style="color: #00cde1;" (click)="login()">Already have an account? Login here</span><br>
+             <span>Sign Up with</span>
+             </div>
 
-      <ion-label float>fullname</ion-label>
-          <ion-input type="text"  name="fullname"></ion-input>
+             <div class="social-btns">
 
-
-
-          <ion-label float>Email</ion-label>
-          <ion-input type="email" name="email"></ion-input>
-
-
-          <ion-label float>Password</ion-label>
-          <ion-input type="password"  name="password"></ion-input>
-
-
-
-          <ion-label float>Retrypassword</ion-label>
-          <ion-input type="password"  name="password"></ion-input>
-
-
-        <div padding text-center>
-          <button ion-button round color="light" icon-right>
-            signup <ion-icon name="person-add"></ion-icon>
-          </button>
-        </div>
+                 <ion-button fill="clear"  class="googlebtn ion-no-padding">
+               <ion-img src="assets/img/gmail.png"></ion-img>
+                 </ion-button>
 
 
-    </form>
+               </div>
 
-  </div>
+       </ion-card-content>
+        </form>
+    </ion-card>
+
 </ion-content>

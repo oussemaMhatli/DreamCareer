@@ -21,6 +21,7 @@ ionViewDidEnter() {
   this.animateOnScroll();
 }
 animateOnScroll() {
+
   const element = this.dataAnimateOnScroll.nativeElement;
   const animation = this.animationCtrl.create()
     .addElement(element)
@@ -30,7 +31,9 @@ animateOnScroll() {
     .fromTo('transform', 'translateX(-50px) rotate(-540deg)', 'translateX(0) rotate(0deg)');
 
   animation.play().then(() => {
-   this.router.navigate(["login"])
+   this.router.navigate(["wl"])
   });
+
+
 }
 }

@@ -1,0 +1,49 @@
+<ion-card class="full-height-card">
+  <!-- Header -->
+  <ion-item>
+    <ion-avatar slot="start">
+      <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
+      <ng-template #defaultImage>
+        <img src="assets/img/userP.png" />
+      </ng-template>
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ post.username }}</h3>
+      <p>{{ post.location }}</p>
+    </ion-label>
+      <ion-icon name="person-add-outline" ></ion-icon>
+  </ion-item>
+
+  <!-- Main Content -->
+    <img src="assets/img/oussema.jpg" alt="ion">
+
+    <ion-card-content>
+{{post.caption}}    </ion-card-content>
+<div>{{ formatTimeDifference(post.createdAt) }}</div>
+
+  <!-- Footer - Ionic Grid System -->
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" center text-center>
+          <button>
+            <ion-icon name="heart-outline"></ion-icon>
+            <div>{{ likeslength }}</div>
+          </button>
+        </ion-col>
+        <ion-col size="4" center text-center>
+          <button>
+            <ion-icon name="text"></ion-icon>
+            <div>{{ post.commentCount }} Comments</div>
+          </button>
+        </ion-col>
+        <ion-col size="4" center text-center>
+          <button>
+            <ion-icon name="time"></ion-icon>
+            <div>{{ formatTimeDifference(post.createdAt) }}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-card>

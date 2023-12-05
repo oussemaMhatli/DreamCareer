@@ -1,5 +1,47 @@
 
 
-<ion-menu side="end" contentId="main-content">
+<ion-menu side="end" contentId="main-content" >
+<ion-content >
+  <div class="menu-header-bg"></div>
+  <div class="header-content">
+    <ion-avatar >
+      <img src="assets/img/oussema.jpg"  />
+    </ion-avatar>
+    <ion-label >
+      <div class="flex-container" (click)="notifications($event)">
+      <h2>{{ user.username }}</h2>
+      <ion-icon name="caret-down-outline"  style="color: aliceblue;"></ion-icon>
+    </div>
+      <p>{{ user.location }}</p>
+
+    </ion-label>
+  </div>
+  <ion-list lines="none" class="mt-5 menu-items">
+      <ion-item >
+        <ion-icon name="chatbox-outline" slot="start"></ion-icon>
+        <ion-label>Messages</ion-label>
+      </ion-item>
+
+      <ion-item >
+        <ion-icon name="notifications-outline" slot="start"></ion-icon>
+        <ion-label>notifications</ion-label>
+      </ion-item>
+
+      <ion-item >
+        <ion-icon name="contrast-outline" slot="start"></ion-icon>
+        <ion-label>Dark Mode</ion-label>
+      </ion-item>
+
+      <ion-item >
+        <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+        <ion-label>Help</ion-label>
+      </ion-item>
+      <ion-item >
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>
 
 </ion-menu>
+
