@@ -1,4 +1,58 @@
+<div class="posts-container">
+  <div class="search-container-center" #searchContainer>
+    <div class="search-div">
+      <div class="search-row">
+        <ion-searchbar class="custom-searchbar" #SearchBar></ion-searchbar>
+      </div>
+      <div class="icon-row">
+        <ion-icon
+          name="options-outline"
+          class="icon-filter custom-icon-center"
+          size="large"
+          #iconSearch
+        ></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="container-fluid gedf-wrapper">
+      <div class="row">
+          <!--- \\\\\\\Post-->
+          <div class="addPostCard">
+            <div class="avatar">
+              <ion-avatar>
+                <img
+                  alt="Silhouette of a person's head"
+                  src="assets/img/userP.png"
+                />
+              </ion-avatar>
+              <div class="inputPostContainer">
+              <textarea
+                type="text"
+                placeholder="What's in your mind?"
+                class="inputPost"
 
-<ng-container *ngFor="let post of posts">
-  <app-post [post]="post"></app-post>
-</ng-container>
+              ></textarea>
+              <div class="Buttons">
+                <ion-icon name="camera-outline" size="large" (click)="showFileInput()" ></ion-icon>
+                <button class="addButton">save</button>
+              </div>
+
+
+
+            </div>
+            </div>
+        </div>
+        <input class="form-control" type="file" id="file" multiple #fileInput  (change)="handleFileInput($event)" *ngIf="!isFileHidden" />
+
+
+
+
+
+        <ng-container *ngFor="let post of posts">
+          <app-post [post]="post"></app-post>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

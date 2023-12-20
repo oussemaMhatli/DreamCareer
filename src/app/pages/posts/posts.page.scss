@@ -1,1 +1,118 @@
+.posts-container
+{
+  margin-top: 4vh;
+  z-index: 1;
+  overflow-y: scroll;
+}
+.search-container-center{
+  display: flex;
+  justify-content: center;
+}
+.search-div {
+  display: flex;
+  flex-direction: row; /* Stack the rows vertically */
+  width: 37vh;
 
+}
+.icon-row {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Set margin to 0 */
+
+}
+.addPostCard
+{
+  border-radius: 8vh;
+  height: 12vh;
+  box-shadow: 0 2vh 7vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2vh;
+
+}
+ion-avatar{
+  border:0.5vh solid   #00CDE1;
+  width: 12vh;
+  height: 12vh;
+  margin-left: -4vh;
+
+}
+.avatar{
+margin-left: 2vh;
+width: 100%;
+display: flex;
+align-items: center;
+
+}
+.inputPost
+{
+  width: 75%;
+  background-color: #ECECEC;
+  height: 6vh;
+  border: none;
+  transition: background-color 0.3s ease; /* Add a smooth transition for visual effect */
+
+}
+.inputPostContainer{
+  width: 85%;
+  background-color: #ECECEC;
+  border-radius: 3vh;
+  height: 6vh;
+  border: none;
+  transition: background-color 0.3s ease; /* Add a smooth transition for visual effect */
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+textarea:focus {
+  background:none;
+  outline: none;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border: none;
+
+}
+
+.addButton
+{
+  color: white;
+  background-color: #00CDE1;
+  border-radius: 4vh;
+  height: 6vh;
+  float: right;
+  width: 8vh;
+}
+.custom-searchbar {
+  --border-radius: 30px; /* Set border radius */
+  --background:#EDEDED;
+}
+.custom-icon-center {
+  color:#00CDE1;
+}
+
+.icon-add
+{
+  //display: flex;
+  //justify-content: center;
+}
+.icon-add ion-icon{
+  width: 4vh;
+}
+.Buttons {
+  display: flex;
+  flex-grow: 1; /* Occupy all available space */
+  justify-content: space-between; /* Space between the icon and the button */
+  align-items: center;
+}
+
+.Buttons ion-icon {
+  flex-grow: 0; /* Don't grow, maintain original size */
+  color: gray;
+
+}
+
+.Buttons button {
+  flex-grow: 0; /* Don't grow, maintain original size */
+}

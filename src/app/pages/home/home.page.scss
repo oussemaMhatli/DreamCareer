@@ -1,4 +1,25 @@
-.router
-{
+ion-content{
+}
+app-navbar {
+  transition: transform 0.3s ease-in-out;
+}
 
+.header-hidden {
+  transform: translateY(-100%);
+}
+.custom-searchbar {
+  --border-radius: 30px; /* Set border radius */
+  --background:#EDEDED;
+}
+
+.search-row,
+.icon-row {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Set margin to 0 */
+
+}
+.search-container-center{
+  display: flex;
+  justify-content: center;
 }

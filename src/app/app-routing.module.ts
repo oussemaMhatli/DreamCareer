@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'messages',
+    loadChildren: () => import('./pages/messages/messages.module').then( m => m.MessagesPageModule)
+  },
+  {
+    path: 'leadboard',
+    loadChildren: () => import('./pages/leadboard/leadboard.module').then( m => m.LeadboardPageModule)
+  },
 
 ];
 @NgModule({

@@ -1,5 +1,5 @@
+ <!--
 <ion-card class="full-height-card">
-  <!-- Header -->
   <ion-item>
     <ion-avatar slot="start">
       <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
@@ -14,14 +14,12 @@
       <ion-icon name="person-add-outline" ></ion-icon>
   </ion-item>
 
-  <!-- Main Content -->
     <img src="assets/img/oussema.jpg" alt="ion">
 
     <ion-card-content>
 {{post.caption}}    </ion-card-content>
 <div>{{ formatTimeDifference(post.createdAt) }}</div>
 
-  <!-- Footer - Ionic Grid System -->
   <ion-footer>
     <ion-grid>
       <ion-row>
@@ -46,4 +44,82 @@
       </ion-row>
     </ion-grid>
   </ion-footer>
+</ion-card>
+-->
+<ion-card *ngIf="post.postImageUrls[0]?.url.length>0">
+  <div class="postImg">
+    <div class="heading">
+      <ion-avatar slot="start" class="avatar">
+        <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
+        <ng-template #defaultImage>
+          <img src="assets/img/userP.png" />
+        </ng-template>
+        </ion-avatar>
+
+        <div class="icon-container" (click)="notifications($event)">
+          <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
+
+        </div>
+
+    </div>
+
+    <img alt="Silhouette of mountains" [src]="post.postImageUrls[0]?.url" id="image-post"/>
+    <div class="post-footer">
+      <div>
+        <ion-icon [name]="liked ? 'heart' : 'heart-outline'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
+        <div  class="number-icon">{{ likeslength }}</div>
+      </div>
+  <div >
+    <ion-icon name="chatbox-ellipses" size="large"></ion-icon>
+    <div class="number-icon">{{ post.commentCount }} </div>
+  </div>
+
+    </div>
+  </div>
+<div class="time"> <ion-icon name="time"></ion-icon>
+  <div>{{ formatTimeDifference(post.createdAt) }}</div></div>
+
+  <ion-card-content *ngIf="paragraph.length > 0">
+
+    {{ getDisplayedParagraph() }}
+    <a *ngIf="paragraph.length > 60" (click)="toggleParagraph()" class="toggle-link">{{ getToggleLabel() }}</a>
+  </ion-card-content>
+</ion-card>
+
+<!----->
+<ion-card *ngIf="post.postImageUrls[0]?.url.length <= 0">
+  <div class="heading1">
+    <ion-avatar slot="start" class="avatar">
+      <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
+      <ng-template #defaultImage>
+        <img src="assets/img/userP.png" />
+      </ng-template>
+      </ion-avatar>
+
+      <div class="icon-container" (click)="notifications($event)">
+        <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
+
+      </div>
+
+  </div>
+
+    <ion-card-content *ngIf="paragraph.length > 0">
+
+      <div class="text">{{ getDisplayedParagraph() }}</div>
+      <a *ngIf="paragraph.length > 70" (click)="toggleParagraph()" class="toggle-link">{{ getToggleLabel() }}</a>
+    </ion-card-content>
+    <div class="time1"> <ion-icon name="time"></ion-icon>
+      <div>{{ formatTimeDifference(post.createdAt) }}</div>
+    </div>
+    <div class="post-footer1">
+      <div>
+        <ion-icon [name]="liked ? 'heart' : 'heart-outline'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
+        <div  class="number-icon">{{ likeslength }}</div>
+      </div>
+  <div >
+    <ion-icon name="chatbox-ellipses" size="large"></ion-icon>
+    <div class="number-icon">{{ post.commentCount }} </div>
+  </div>
+
+    </div>
 </ion-card>

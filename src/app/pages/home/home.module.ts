@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { SettingMenuComponent } from './setting-menu/setting-menu.component';
 import { PostsPageModule } from '../posts/posts.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import { PostsPageModule } from '../posts/posts.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    PostsPageModule
-
+    PostsPageModule,
+    DragDropModule
 
   ],
 })

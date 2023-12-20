@@ -6,9 +6,9 @@ export class Post {
   userId!: string;
   location!: string;
   caption!: string;
-  postImageUrls!: string[]; // You can define a more specific type if needed
-  userProfilePhoto!: UserPhoto[]; // You can define a more specific type if needed
-  likes!: any[]; // You can define a more specific type if needed
+  postImageUrls!:any [];
+  userProfilePhoto!: UserPhoto[];
+  likes!: any[];
   commentCount!: number;
   createdAt!: string;
   updatedAt!: string;
@@ -27,4 +27,11 @@ export class PostResponse {
 }
 export class Likes {
   [username: string]: boolean;
+}
+export class PostImage {
+  url!: string;
+  filename!: string;
+
+
+
 }

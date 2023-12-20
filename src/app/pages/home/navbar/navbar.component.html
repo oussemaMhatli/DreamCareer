@@ -1,10 +1,27 @@
 
-<ion-header [translucent]="true">
-  <div class="container d-flex align-items-center justify-content-between">
-    <img src="assets/img/web logo.png" class="img-fluid  mt-3"  />
-    <div  id="main-content" class="icon mt-3">
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+<ion-header >
+    <div cdkDropList cdkDropListOrientation="horizontal" id="main-content" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let timePeriod of timePeriods; let i = index"  cdkDrag cdkDragLockAxis="x"
+         [ngClass]="{
+           'container-img1': i === 0,
+           'container-img2': i === 1,
+           'container-img3': i === 2
+         }">
+      <img [src]="timePeriod" />
+    </div>
+    </div>
+    <div class="search-container-center" #searchContainer >
+    <div class="search-div">
+      <div class="search-row">
+        <ion-searchbar class="custom-searchbar"  #SearchBar></ion-searchbar>
+      </div>
+      <div class="icon-row">
+        <ion-icon name="options-outline" class="icon-filter custom-icon-center" size="large"
+        #iconSearch ></ion-icon>
+      </div>
+    </div>
   </div>
-  </div>  </ion-header>
+</ion-header>
+
+
+

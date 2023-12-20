@@ -1,6 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar (hideNavbarElement)="onNavbarElementHidden($event)"></app-navbar>
 
 
-<ion-content><router-outlet class="router"></router-outlet></ion-content>
+<ion-content (ionScroll)="handleScroll($event)"><router-outlet ></router-outlet ></ion-content>
 
-<app-menu  ></app-menu>

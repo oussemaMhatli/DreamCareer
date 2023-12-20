@@ -1,0 +1,127 @@
+.postImg
+{
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  border-radius: 6vh;
+
+}
+ion-card{
+  border-radius: 6vh;
+  width: 100%;
+  margin-left: 0vh;
+
+}
+#image-post{
+  width: 100%;
+  height: 50vh;
+  border-radius: 6vh;
+
+}
+.heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  color: white; /* Set the text color as needed */
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.heading1 {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  color: white; /* Set the text color as needed */
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+
+
+}
+ion-avatar{
+  border:0.5vh solid   #00CDE1;
+  width: 12vh;
+  height: 12vh;
+
+}
+.toggle-link {
+  color: #00CDE1;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.icon-container{
+  width: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00CDE1;
+  border-radius: 2vh;
+  margin-right: 3vh;
+  margin-top: 4vh;
+  height: 3vh;
+
+}
+.icon-container1{
+  width: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00CDE1;
+  border-radius: 2vh;
+
+  height: 3vh;
+
+}
+  .post-footer {
+    display: flex;
+    margin-top: -7vh;
+    margin-left: 2vh;
+    justify-content: space-around;
+    width: 16vh;
+
+  }
+
+  .post-footer1 {
+    display: flex;
+    margin-top: -5vh;
+    margin-left: 2vh;
+    justify-content: space-around;
+    width: 16vh;
+
+  }
+ .number-icon{
+  display: flex;
+  justify-content: center;
+  margin-top: -2vh;
+  color: #00CDE1;
+
+ }
+ .post-footer ion-icon {
+  color: #3498db; /* Change the color as needed */
+}
+.post-footer1 ion-icon {
+  color: #3498db; /* Change the color as needed */
+}
+.time
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time1
+{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2vh;
+}
+.text
+{
+  margin-top: 2vh;
+}

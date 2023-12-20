@@ -16,6 +16,8 @@ import { HomePageModule } from './pages/home/home.module';
 import { WelcomeComponent } from './Component/welcome/welcome.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.component';
+import { LeadboardPageModule } from './pages/leadboard/leadboard.module';
+import { MessagesPageModule } from './pages/messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.co
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot(
+      ),
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
@@ -36,6 +39,9 @@ import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.co
      BrowserAnimationsModule,
      HomePageModule,
      IonicStorageModule.forRoot(),
+     LeadboardPageModule,
+     MessagesPageModule
+
 
 
 ],
