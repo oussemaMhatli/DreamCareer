@@ -1,0 +1,76 @@
+.header
+{
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a slight shadow */
+    border-radius: 2vh;
+}
+.header ion-icon {
+  color: #00CDE1;
+}
+.header p {
+text-decoration: underline;
+color: #00CDE1;
+
+
+}
+.comments
+{
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 9vh;
+}
+
+.input-footer {
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline when focused */
+  padding: 0.5vh; /* Add padding to the input */
+  width: 70%;
+  height: 90%;
+  background-color: #F0F2F5;
+
+  ::placeholder {
+    margin-left: 2vh;
+  }
+}
+.btnandinput{
+  background-color: #F0F2F5;
+  width: 100%;
+  border-radius: 4vh;
+display: flex;
+justify-content: space-between;
+
+
+}
+#close
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px; /* Adjust the margin as needed for spacing */
+    color: white; /* Set the color of the icon */
+    background-color: #00CDE1;; /* Set the background color of the icon */
+    padding: 5px; /* Add padding for better visibility */
+    border-radius: 50%; /* Optional: Add border-radius for a circular background */
+}
+
+#btn
+{
+  color: white;
+  background-color: #00CDE1;
+  border-radius: 6vh;
+  height: 100%;
+  width: 12vh;
+}
+
+#cam{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

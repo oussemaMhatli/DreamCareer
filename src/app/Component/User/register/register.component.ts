@@ -74,6 +74,7 @@ this.service.register(this.registerInput).subscribe( async (res:any)=>{
   console.log("res",res)
   localStorage.setItem("user",res.token)
   localStorage.setItem("id",res.newUser.id)
+  localStorage.setItem("username",res.newUser.username)
 
   await this.showToasts("successful created",'success')
   this.router.navigate(["home"])

@@ -45,6 +45,8 @@ export class LoginComponent implements OnInit {
       console.log("res",res)
       localStorage.setItem("user",res.token)
       localStorage.setItem("id",res.user.id)
+      localStorage.setItem("username",res.user.username)
+
 
       await this.showToasts("Login successful",'success')
       this.router.navigate(["home/posts"])

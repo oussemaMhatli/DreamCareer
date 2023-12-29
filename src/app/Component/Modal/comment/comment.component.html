@@ -1,0 +1,57 @@
+
+<div class="content">
+<div class="comment">
+<div class="timeandavatar">
+  <ion-avatar slot="start">
+    <img *ngIf="comment.userProfilePhoto[0]?.url; else defaultImage" [src]="comment.userProfilePhoto[0]?.url" />
+    <ng-template #defaultImage>
+      <img src="assets/img/oussema.jpg" />
+    </ng-template>
+    </ion-avatar>
+    <p class="timestamp"> <ion-icon name="time"></ion-icon>{{ formatTimeDifference(comment.createdAt) }}</p>
+
+</div>
+
+    <div class="commentcontent">
+      <div class="comment-text">
+        <p ><span class="username">{{ comment.username }}</span> <br> {{ comment.commentBody }}</p>
+
+      </div>
+      <div class="comments-footer">
+        <div class="icon-container" >
+          <ion-icon name="chatbox-ellipses" size="large" style="color: #00CDE1;"></ion-icon>
+
+          <ion-icon [name]="liked ? 'heart' : 'heart'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
+          <p style="margin-top: 0.5vh;color: #00CDE1;">3 Likes </p>
+        </div>
+        <ion-icon name="ellipsis-horizontal-outline" *ngIf="comment.username==username" color="white" (click)="notifications($event)"  ></ion-icon>
+
+      </div>
+    </div >
+</div>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>{{ comment?.commentBody }}</p>
+<p>{{ comment?.username }}</p> -->

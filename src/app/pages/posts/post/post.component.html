@@ -56,20 +56,20 @@
         </ng-template>
         </ion-avatar>
 
-        <div class="icon-container" (click)="notifications($event)">
+        <div class="icon-container" *ngIf="post.username == username" (click)="notifications($event)" >
           <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
 
         </div>
 
     </div>
 
-    <img alt="Silhouette of mountains" [src]="post.postImageUrls[0]?.url" id="image-post"/>
+    <img alt="Silhouette of mountains" [src]="post.postImageUrls[0]?.url" id="image-post" (click)="openImageModal(post.postImageUrls[0]?.url)"/>
     <div class="post-footer">
       <div>
-        <ion-icon [name]="liked ? 'heart' : 'heart-outline'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
+        <ion-icon [name]="liked ? 'heart' : 'heart'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
         <div  class="number-icon">{{ likeslength }}</div>
       </div>
-  <div >
+  <div   (click)="openComentsModal()">
     <ion-icon name="chatbox-ellipses" size="large"></ion-icon>
     <div class="number-icon">{{ post.commentCount }} </div>
   </div>
@@ -96,7 +96,7 @@
       </ng-template>
       </ion-avatar>
 
-      <div class="icon-container" (click)="notifications($event)">
+      <div class="icon-container" *ngIf="post.username == username" (click)="notifications($event)"  >
         <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
 
       </div>
@@ -113,10 +113,10 @@
     </div>
     <div class="post-footer1">
       <div>
-        <ion-icon [name]="liked ? 'heart' : 'heart-outline'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
+        <ion-icon [name]="liked ? 'heart' : 'heart'" size="large" [style.color]="liked ? 'red' : '#00CDE1'" (click)="like()"></ion-icon>
         <div  class="number-icon">{{ likeslength }}</div>
       </div>
-  <div >
+  <div (click)="openComentsModal()">
     <ion-icon name="chatbox-ellipses" size="large"></ion-icon>
     <div class="number-icon">{{ post.commentCount }} </div>
   </div>

@@ -1,0 +1,24 @@
+<div class="header" #scrollContainer>
+  <p>People Who Like this Post<ion-icon name="chevron-forward-outline"></ion-icon></p>
+  <ion-icon name="close-outline" (click)="closeModal()" id="close"> </ion-icon>
+
+
+</div>
+<br>
+<ion-content class="comments"  >
+<div *ngFor="let comment of Coments" >
+<app-comment [comment]="comment" class="onecomment"></app-comment>
+</div>
+</ion-content>
+<div  class="footer">
+  <div class="btnandinput">
+    <input type="text" placeholder="Comment as {{ user?.username }}" [(ngModel)]="commentCaption"  class="input-footer"/>
+    <div id="cam">
+      <ion-icon name="camera-outline" size="large"  ></ion-icon>
+
+      <button id="btn" (click)="addComents()">save</button>
+    </div>
+
+  </div>
+
+  </div>

@@ -43,7 +43,7 @@
             </div>
             </div>
         </div>
-        <input class="form-control" type="file" id="file" multiple #fileInput  (change)="handleFileInput($event)" *ngIf="!isFileHidden" />
+        <input class="form-control a" type="file" id="file" multiple #fileInput  (change)="handleFileInput($event)" *ngIf="!isFileHidden" />
 
 
 
@@ -56,3 +56,8 @@
     </div>
   </div>
 </div>
+<ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+  <ion-infinite-scroll-content
+    loadingText="Loading more data..."
+  ></ion-infinite-scroll-content>
+</ion-infinite-scroll>

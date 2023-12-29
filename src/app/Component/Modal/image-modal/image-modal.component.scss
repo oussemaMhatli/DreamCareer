@@ -1,0 +1,23 @@
+img
+{
+  height: 80%;
+width: 100%;
+}
+.imageContainer
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+height: 100%;
+background-color: black;
+}
+ion-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px; /* Adjust the margin as needed for spacing */
+  color: white; /* Set the color of the icon */
+  background-color: #00CDE1;; /* Set the background color of the icon */
+  padding: 5px; /* Add padding for better visibility */
+  border-radius: 50%; /* Optional: Add border-radius for a circular background */
+}

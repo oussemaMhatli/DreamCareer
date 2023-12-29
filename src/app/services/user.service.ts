@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/User';
+import { ApisService } from './apis.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
-  url:string='https://dreamcareer.onrender.com/'
+  constructor(private http:HttpClient ,private apiService:ApisService) { }
+  url:string=this.apiService.apiUrl
   ;
    login(login:any):Observable<any>{
     console.log();
@@ -21,13 +22,10 @@ export class UserService {
 
   }
 
-    private getHeaders(tokenText :string): HttpHeaders {
-      const token = tokenText;
-      return new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    }
+
 
     getUser(userId: string,token:string): Observable<any> {
-      const headers = this.getHeaders(token);
+      const headers = this.apiService.getHeaders(token);
       const url = `${this.url}u/${userId}`;
 
       return this.http.get<any>(url, { headers });

@@ -44,6 +44,7 @@ ion-card{
 
 
 }
+
 ion-avatar{
   border:0.5vh solid   #00CDE1;
   width: 12vh;
@@ -103,16 +104,18 @@ ion-avatar{
 
  }
  .post-footer ion-icon {
-  color: #3498db; /* Change the color as needed */
+  color: #00CDE1; /* Change the color as needed */
 }
 .post-footer1 ion-icon {
-  color: #3498db; /* Change the color as needed */
+  color: #00CDE1; /* Change the color as needed */
 }
 .time
 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
+  margin-right: 2vh;
+
 }
 .time1
 {

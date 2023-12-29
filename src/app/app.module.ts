@@ -18,6 +18,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.component';
 import { LeadboardPageModule } from './pages/leadboard/leadboard.module';
 import { MessagesPageModule } from './pages/messages/messages.module';
+import { ComentSettingComponent } from './Component/settings/coment-setting/coment-setting.component';
+import { PostSettingComponent } from './Component/settings/post-setting/post-setting.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MessagesPageModule } from './pages/messages/messages.module';
     LoginComponent,
     RegisterComponent,
     WelcomeComponent,
-    WelcomPageComponent
+    WelcomPageComponent,
+    ComentSettingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,76 @@
+.content{
+  display: flex;
+  justify-content: center;
+
+}
+
+.comment
+{
+width:96%;
+display: flex;
+justify-content: space-between;
+border-radius: 2vh;
+box-shadow: 0 10px 4px rgba(0, 0, 0, 0.1); /* Adjust the shadow values as needed */
+
+}
+.commentcontent{
+
+  width: 79%;
+  margin-right: 2vh;
+  margin-left: 1vh;
+  margin-bottom: 1vh;
+ion-avatar{
+  margin-left: 0.5vh;
+  width: 10vh;
+  height: 10vh;
+}
+p{
+
+}
+
+}
+ion-avatar{
+  width: 11vh;
+  height: 11vh;
+}
+
+.comment-text{
+  border-radius: 2vh;
+  padding: 2vh;
+
+}
+.username
+{
+  font-size: 3vh;
+  font-family: 'Roboto', sans-serif; /* Use Roboto font, fallback to a generic sans-serif font */
+
+}
+img
+{margin-left: 1vh;
+  border: 4px solid #00CDE1;
+  margin-top: 0vh;
+  margin-left: -0.5vh;
+}
+p
+{
+  color: black;
+}
+.comments-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.icon-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.timestamp {
+color: #00CDE1;
+margin-left: 1vh;
+
+}
+
+.timeandavatar
+{}
