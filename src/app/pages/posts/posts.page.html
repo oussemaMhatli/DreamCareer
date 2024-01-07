@@ -2,7 +2,7 @@
   <div class="search-container-center" #searchContainer>
     <div class="search-div">
       <div class="search-row">
-        <ion-searchbar class="custom-searchbar" #SearchBar></ion-searchbar>
+        <ion-searchbar class="custom-searchbar" #SearchBar [(ngModel)]="Search"></ion-searchbar>
       </div>
       <div class="icon-row">
         <ion-icon
@@ -31,11 +31,12 @@
                 type="text"
                 placeholder="What's in your mind?"
                 class="inputPost"
+                [(ngModel)]="postCaption"
 
               ></textarea>
               <div class="Buttons">
                 <ion-icon name="camera-outline" size="large" (click)="showFileInput()" ></ion-icon>
-                <button class="addButton">save</button>
+                <button class="addButton" (click)="addPost()">save</button>
               </div>
 
 
@@ -49,7 +50,7 @@
 
 
 
-        <ng-container *ngFor="let post of posts">
+        <ng-container *ngFor="let post of posts|post: Search">
           <app-post [post]="post"></app-post>
         </ng-container>
       </div>

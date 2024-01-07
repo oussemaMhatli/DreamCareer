@@ -12,11 +12,10 @@ margin-right: -18px;
 margin-top: -50px;
 }
 .header-content{
-  position: absolute;
-  top: 30px;
-  left:18px ;
+
   display: flex;
-  align-items: center;
+ justify-content: flex-start;
+ margin-left: 10%;
 }
 img{
   width: 110%; max-height: 100%;
@@ -52,7 +51,10 @@ ion-label{
 .menu-items ion-item{
   padding-left: 20px;
   margin-bottom: 10px;
+  --border-color: #09D8F1; /* Set your desired line color */
+
 }
+
 .active{
   border-left:5px;
   color: #628cff;

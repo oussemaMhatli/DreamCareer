@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { SettingMenuComponent } from '../setting-menu/setting-menu.component';
 import { UserService } from 'src/app/services/user.service';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,16 +14,10 @@ export class MenuComponent  implements OnInit {
     token:any;
     user:UserProfile=new UserProfile()
 
-  constructor(public popoverCtrl: PopoverController,private userService:UserService) { }
-  async notifications(ev: any) {
-    const popover = await this.popoverCtrl.create({
-        component: SettingMenuComponent,
-        event: ev,
-        animated: true,
-        showBackdrop: true
-    });
-    return await popover.present();
-  }
+  constructor(public popoverCtrl: PopoverController
+    ,private userService:UserService
+    ,private router:Router,private modalController: ModalController) { }
+
   ngOnInit() {
     this.id=localStorage.getItem("id");
     //const decodedToken = jwt_decode(this.token);
@@ -34,5 +29,15 @@ export class MenuComponent  implements OnInit {
     })
 
 
+  }
+  goProfile(){
+    this.router.navigate(['home/profile'])
+    this.modalController.dismiss();
+
+
+  }
+  goPost(){
+    this.router.navigate(['home/posts'])
+    this.modalController.dismiss();
   }
 }

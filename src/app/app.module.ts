@@ -19,7 +19,9 @@ import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.co
 import { LeadboardPageModule } from './pages/leadboard/leadboard.module';
 import { MessagesPageModule } from './pages/messages/messages.module';
 import { ComentSettingComponent } from './Component/settings/coment-setting/coment-setting.component';
-import { PostSettingComponent } from './Component/settings/post-setting/post-setting.component';
+import { PostPipe } from './pipes/post.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { PostSettingComponent } from './Component/settings/post-setting/post-set
      HomePageModule,
      IonicStorageModule.forRoot(),
      LeadboardPageModule,
-     MessagesPageModule
+     MessagesPageModule,
 
 
 

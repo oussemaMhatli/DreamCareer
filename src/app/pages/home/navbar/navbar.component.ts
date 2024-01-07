@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { IonContent, IonReorderGroup, ItemReorderEventDetail, NavController, PopoverController } from '@ionic/angular';
+import { IonContent, IonReorderGroup, ItemReorderEventDetail, ModalController, NavController, PopoverController } from '@ionic/angular';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { UserService } from 'src/app/services/user.service';
 import { SettingMenuComponent } from '../setting-menu/setting-menu.component';
@@ -10,6 +10,7 @@ import {
 
 } from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
+import { MenuComponent } from '../menu/menu.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -38,8 +39,9 @@ export class NavbarComponent implements OnInit {
   id:any;
     token:any;
     user:UserProfile=new UserProfile()
-
+  open:boolean=true
   constructor(public popoverCtrl: PopoverController,
+    private modalController: ModalController,
     private userService:UserService,
     public renderer: Renderer2,
     public zone: NgZone,
@@ -52,16 +54,31 @@ export class NavbarComponent implements OnInit {
 
 
   }
-  async notifications(ev: any) {
-    const popover = await this.popoverCtrl.create({
-        component: SettingMenuComponent,
-        event: ev,
-        animated: true,
-        showBackdrop: true,
-        //cssClass:'popover'
-      });
+  async openUpdateModal() {
+    this.open=!this.open
 
-    return await popover.present();
+    if(this.open==false){
+      const modal = await this.modalController.create({
+        component:MenuComponent ,
+
+
+      });
+      modal.style.position = 'fixed';
+      modal.style.bottom = '0';
+      modal.style.left = '0';
+      modal.style.right = '0';
+      modal.style.top = 'auto';
+      modal.style.height = '86%';
+
+
+      return await modal.present();
+    }else{
+this.closeModal()
+    }
+
+  }
+  closeModal() {
+    this.modalController.dismiss();
   }
   timePeriods = [
     '',
@@ -114,7 +131,10 @@ export class NavbarComponent implements OnInit {
       }
 
   }
+  goHome(){
+    this.router.navigate(['home/posts'])
 
+  }
 
 
 }

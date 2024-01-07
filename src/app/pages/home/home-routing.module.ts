@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,14 @@ const routes: Routes = [
       {
         path: 'leadbord',
         loadChildren: () => import('../leadboard/leadboard.module').then( m => m.LeadboardPageModule)
+      },
+      {
+        path: 'leadbord',
+        loadChildren: () => import('../leadboard/leadboard.module').then( m => m.LeadboardPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
       },
     ]
   }

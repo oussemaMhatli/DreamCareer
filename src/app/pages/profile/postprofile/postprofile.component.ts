@@ -1,21 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/Posts';
+import { PopoverController, ModalController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
-import { SettingMenuComponent } from '../../home/setting-menu/setting-menu.component';
-import { ModalController, PopoverController } from '@ionic/angular';
-import { ImageModalComponent } from 'src/app/Component/Modal/image-modal/image-modal.component';
 import { ComentsModalComponent } from 'src/app/Component/Modal/coments-modal/coments-modal.component';
-import { CommentsService } from 'src/app/services/comments.service';
-import { PostsService } from 'src/app/services/posts.service';
+import { ImageModalComponent } from 'src/app/Component/Modal/image-modal/image-modal.component';
 import { PostSettingComponent } from 'src/app/Component/settings/post-setting/post-setting.component';
+import { Post } from 'src/app/models/Posts';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss'],
+  selector: 'app-postprofile',
+  templateUrl: './postprofile.component.html',
+  styleUrls: ['./postprofile.component.scss'],
 })
-export class PostComponent  implements OnInit {
+export class PostprofileComponent  implements OnInit {
+
 
   @Input() post!: Post;
   likeslength!:number;
@@ -41,7 +40,7 @@ export class PostComponent  implements OnInit {
    this.paragraph=this.post.caption;
    this.username=localStorage.getItem("username")
    this.token=localStorage.getItem("user")
-   this.searchLiked(this.post,this.username)
+   this.searchLiked(this.post,"oussema")
    this.commentEventService.closeModal$.subscribe(() => {
 this.closePopover()
   });
@@ -102,7 +101,7 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
   }
   like(){
     const obj={
-      "username":this.username
+      "username":"oussema"
     }
     console.log("thi",this.username)
     this.liked=!this.liked;
@@ -110,12 +109,15 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
       this.onePost=res;
       this.getLikeCount(this.onePost)
 
+      console.log("thenya",this.onePost)
 
     })
   }
   getPostsbyId(id:any){
     this.postService.getPostsbyId(this.token,id).subscribe(res=>{
+    console.log("zayd",res)
     this.onePost=res
+    console.log("zayd1",res)
 
     })
   }

@@ -1,0 +1,58 @@
+  <div class="container">
+    <img src="../../../assets/img/oussema.jpg" class="header-img" />
+    <div class="header-username">
+      <h2 class="username">{{ username }}</h2>
+    </div>
+  </div>
+
+  <div class="posts-container">
+
+    <div>
+      <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <!--- \\\\\\\Post-->
+            <div class="addPostCard">
+              <div class="avatar">
+                <ion-avatar>
+                  <img
+                    alt="Silhouette of a person's head"
+                    src="assets/img/userP.png"
+                  />
+                </ion-avatar>
+                <div class="inputPostContainer">
+                <textarea
+                  type="text"
+                  placeholder="What's in your mind?"
+                  class="inputPost"
+                  [(ngModel)]="postCaption"
+
+                ></textarea>
+                <div class="Buttons">
+                  <ion-icon name="camera-outline" size="large" (click)="showFileInput()" ></ion-icon>
+                  <button class="addButton" (click)="addPost()">save</button>
+                </div>
+
+
+
+              </div>
+              </div>
+          </div>
+          <input class="form-control a" type="file" id="file" multiple #fileInput  (change)="handleFileInput($event)" *ngIf="!isFileHidden" />
+
+
+
+
+
+          <ng-container *ngFor="let post of posts">
+            <app-postprofile [post]="post"></app-postprofile>
+
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content
+      loadingText="Loading more data..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>

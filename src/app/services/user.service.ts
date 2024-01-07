@@ -30,4 +30,11 @@ export class UserService {
 
       return this.http.get<any>(url, { headers });
     }
+    getUserPosts(username: string,token:string,pagenumber:number): Observable<any> {
+      const headers = this.apiService.getHeaders(token);
+      const url = `${this.url}u/${username}/posts?page=${pagenumber}`;
+
+      return this.http.get<any>(url, { headers });
+    }
+
 }

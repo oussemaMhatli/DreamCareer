@@ -4,6 +4,7 @@ import { LoginComponent } from './Component/User/login/login.component';
 import { RegisterComponent } from './Component/User/register/register.component';
 import { WelcomeComponent } from './Component/welcome/welcome.component';
 import { WelcomPageComponent } from './Component/User/welcom-page/welcom-page.component';
+import { MenuComponent } from './pages/home/menu/menu.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     path: 'welcome',
     component: WelcomeComponent,
   },
+
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -38,6 +40,10 @@ const routes: Routes = [
   {
     path: 'leadboard',
     loadChildren: () => import('./pages/leadboard/leadboard.module').then( m => m.LeadboardPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
 
 ];

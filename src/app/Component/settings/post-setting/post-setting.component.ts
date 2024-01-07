@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { UpdatePostComponent } from '../update-post/update-post.component';
 
 @Component({
   selector: 'app-post-setting',
@@ -37,6 +38,7 @@ token:any
     },
   ];
 
+
   setResult(ev:any) {
     console.log(`Dismissed with role: ${ev.detail.role}`);
   }
@@ -51,6 +53,24 @@ this.postService.delete(this.token,this.postId,this.username).subscribe(async re
  this.closeModal()
 })
 
+}
+async openUpdateModal() {
+  const modal = await this.modalController.create({
+    component:UpdatePostComponent ,
+    componentProps: {
+      PostId: this.postId,
+    },
+
+  });
+  modal.style.position = 'fixed';
+  modal.style.bottom = '40%';
+  modal.style.left = '0';
+  modal.style.right = '0';
+  modal.style.top = 'auto';
+  modal.style.height = '27vh';
+
+
+  return await modal.present();
 }
 closeModal() {
   this.commentEventService.emitCloseEvent();

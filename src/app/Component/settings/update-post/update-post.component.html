@@ -1,0 +1,35 @@
+<div>
+  <div class="header">
+    <ion-icon name="close-outline" (click)="closeModal()" id="close"> </ion-icon>
+
+
+  </div>
+  <div class="addPostCard">
+    <div class="avatar">
+      <ion-avatar>
+        <img
+          alt="Silhouette of a person's head"
+          src="assets/img/userP.png"
+        />
+      </ion-avatar>
+      <div class="inputPostContainer">
+      <textarea
+        type="text"
+        placeholder="What's in your mind?"
+        class="inputPost"
+
+      ></textarea>
+      <div class="Buttons">
+        <ion-icon name="camera-outline" size="large"  ></ion-icon>
+        <button class="addButton">update</button>
+      </div>
+
+
+
+    </div>
+    </div>
+</div>
+<input class="form-control a" type="file" id="file" multiple #fileInput  (change)="handleFileInput($event)"  />
+
+</div>
+
