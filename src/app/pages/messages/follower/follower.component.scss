@@ -41,18 +41,19 @@
 .avatar
 {
      width: 9vh;height: 9vh;border: 3px solid #00CDE1;
+     margin-left: 1px;
 }
 .cnv-div{
   width: 98%;
   height: 14vh;
   border-radius: 6vh;
-  margin-top: 1vh;
-  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
-
+  margin-top: 3vh;
+  box-shadow: 0 2vh 7vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
 
 }
 .cnv-div-container
 {
-
+  display:flex;
+  justify-content: center;
   width: 100%;
 }

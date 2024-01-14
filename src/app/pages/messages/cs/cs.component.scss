@@ -1,0 +1,48 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+
+}
+.avatar
+{
+     width: 9vh;height: 9vh;border: 3px solid #00CDE1;
+}
+.msg
+{
+  width: 67%;
+  margin-left: 2vh;
+
+}
+.time{
+  width: 25%;
+  margin-top: 4vh;
+float: left;
+
+}
+.avatar-div{
+  margin-top: 1vh;
+}
+
+.small-msg
+{
+  font-size: 1em; /* You can adjust the value to your desired text size */
+  color: #B0B0B0;
+  margin-top: -2vh;
+}
+.sm
+{
+  margin-top: 3vh;
+  font-family: "Roboto";
+
+}
+.cnv-div{
+  width: 98%;
+  height: 14vh;
+  border-radius: 6vh;
+  margin-top: 1vh;
+  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+
+
+}

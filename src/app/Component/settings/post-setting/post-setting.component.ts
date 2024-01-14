@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UpdatePostComponent } from '../update-post/update-post.component';
@@ -19,6 +19,7 @@ token:any
   constructor(private postService:PostsService,
     private modalController: ModalController,
     private toastController: ToastController,
+    private loadingController: LoadingController,
 
     private commentEventService:CommentEventService) { }
   public alertButtons = [
@@ -38,7 +39,18 @@ token:any
     },
   ];
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      // Other options if needed
+    });
 
+    await loading.present();
+  }
+
+  async dismissLoading() {
+    await this.loadingController.dismiss();
+  }
   setResult(ev:any) {
     console.log(`Dismissed with role: ${ev.detail.role}`);
   }
@@ -47,10 +59,12 @@ token:any
     this.username=localStorage.getItem("usernme")
   }
 async delete(){
+  this.presentLoading()
 this.postService.delete(this.token,this.postId,this.username).subscribe(async res=>{
   this.commentEventService.emitRefreshEvent();
   await this.showToasts("Post deleted successful",'success')
  this.closeModal()
+ this.dismissLoading()
 })
 
 }

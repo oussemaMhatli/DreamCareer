@@ -7,14 +7,25 @@ import { IonicModule } from '@ionic/angular';
 import { MessagesPageRoutingModule } from './messages-routing.module';
 
 import { MessagesPage } from './messages.page';
+import { FollowerComponent } from './follower/follower.component';
+import { MsgComponent } from './msg/msg.component';
+import { CsComponent } from './cs/cs.component';
+import { UppercaseFirstPipe } from 'src/app/pipes/uppercase-first.pipe';
+import { SocketConfigService } from 'src/app/services/messages/socket-config.service';
+import { SocketService } from 'src/app/services/messages/socket.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MessagesPageRoutingModule
+    MessagesPageRoutingModule,
+
+
   ],
-  declarations: [MessagesPage]
+  declarations: [MessagesPage,FollowerComponent,MsgComponent,
+    CsComponent,
+    UppercaseFirstPipe,
+  ]
 })
 export class MessagesPageModule {}

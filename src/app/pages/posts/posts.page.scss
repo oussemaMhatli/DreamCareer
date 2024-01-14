@@ -116,3 +116,14 @@ textarea:focus {
 .Buttons button {
   flex-grow: 0; /* Don't grow, maintain original size */
 }
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #00CDE1;
+
+  color: #00CDE1;
+}
+.spinner
+{
+  display: flex;
+  justify-content: center;
+}

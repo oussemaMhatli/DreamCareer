@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('../leadboard/leadboard.module').then( m => m.LeadboardPageModule)
       },
       {
-        path: 'profile',
+        path: 'profile/:username',
         loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
       },
     ]

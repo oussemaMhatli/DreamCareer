@@ -1,0 +1,27 @@
+<div class="cnv-div"  *ngIf="messages && messages.length>0" (click)="goMessage()" >
+
+<div class="container"  >
+  <div class="avatar-div">
+    <ion-avatar class="avatar" >
+      <img alt="follower.username" src="assets/img/userP.png"/>
+    </ion-avatar>
+    <ng-template #defaultImage>
+      <img src="assets/img/userP.png" class="header-img" *ngIf="user.profilePhotoUrl; else defaultImage" [src]="user.profilePhotoUrl"/>
+    </ng-template>
+  </div>
+  <div class="msg">
+    <span class="column">
+      <p class="sm">{{ user.username| uppercaseFirst}}</p>
+      <p *ngIf="lastMessage.sender==id" class="small-msg"  > You:{{ lastMessage.content }}</p>
+      <p *ngIf="lastMessage.sender!=id" class="small-msg"  > {{ lastMessage.content }}</p>
+
+    </span>
+  </div>
+
+  <div class="time">
+    <p>
+     {{formatUpdatedAt()}}
+    </p>
+  </div>
+</div>
+</div>

@@ -10,6 +10,8 @@ export class ApisService {
   constructor() { }
    getHeaders(tokenText :string): HttpHeaders {
     const token = tokenText;
+    console.log('Token:', token);
+
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 

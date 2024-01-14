@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
@@ -28,7 +28,24 @@ export class LoginComponent implements OnInit {
 
   }
 
+  @HostListener('pandown', ['$event'])
+  async onPan(event: any): Promise<void> {
+    this.onPanDown()
+    this.reloadComponent()
+  }
+  reloadComponent() {
+    window.location.reload();
+  }
+  showSpinner = false;
 
+  onPanDown() {
+    // Handle pan down event
+    this.showSpinner = true;
+    // Simulate some asynchronous task
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 3000);
+  }
   loading = false;
   loginError = false;
 

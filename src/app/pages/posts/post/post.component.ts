@@ -9,6 +9,9 @@ import { CommentsService } from 'src/app/services/comments.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { PostSettingComponent } from 'src/app/Component/settings/post-setting/post-setting.component';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { FollowRequest } from 'src/app/models/FollowRequest';
 
 @Component({
   selector: 'app-post',
@@ -25,23 +28,31 @@ export class PostComponent  implements OnInit {
   username:any
   token:any
   onePost!:Post
+  followings:any[]=[]
+  id:any
+  followRequest!:FollowRequest
 
   constructor(
     public popoverCtrl: PopoverController,
     private modalController: ModalController,
     private postService:PostsService,
-    private commentEventService:CommentEventService
+    private userService:UserService,
+
+    private commentEventService:CommentEventService,
+    private route:Router
   ) { }
 
   ngOnInit() {
   console.log(this.post)
     this.onePost=this.post
+    this.id=localStorage.getItem("id")
     console.log("loula",this.onePost)
     this.likeslength=this.getLikeCount(this.post);
    this.paragraph=this.post.caption;
    this.username=localStorage.getItem("username")
    this.token=localStorage.getItem("user")
    this.searchLiked(this.post,this.username)
+   this.getFolowingsUser()
    this.commentEventService.closeModal$.subscribe(() => {
 this.closePopover()
   });
@@ -136,4 +147,38 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
       },
     });
     return await modal.present();    }
+    goProfile(){
+      this.route.navigate(['home/profile',this.post.username])
+
+    }
+    getFolowingsUser(){
+      this.userService.getUserFollowings(this.id,this.token).subscribe(res=>{
+        this.followings=res
+        console.log("jfoun",this.followings,"jfoun")
+
+      })
+    }
+
+    isFollowing(username: string): boolean {
+      // Ensure that this.followings is an array
+      if (Array.isArray(this.followings)) {
+        // Check if the username is found in this.followings
+        console.log("ahhhhhh",this.followings.some(user => user.username === username))
+        return this.followings.some(user => user.username === username);
+      } else {
+        console.error("Followings array is not properly initialized.");
+        return false; // or handle it in a way that makes sense for your application
+      }
+    }
+    follow(fid:string,username:string){
+     let obj={
+       "followingId":fid
+      }
+      console.log(fid)
+      this.userService.followUnfollow(this.id,this.token,obj).subscribe(res=>{
+        this.getFolowingsUser()
+      })
+
+    }
+
 }

@@ -1,8 +1,9 @@
 
+
 <ion-card *ngIf="post.postImageUrls[0]?.url.length>0">
   <div class="postImg">
     <div class="heading">
-      <ion-avatar slot="start" class="avatar">
+      <ion-avatar slot="start" class="avatar" (click)="goProfile()">
         <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
         <ng-template #defaultImage>
           <img src="assets/img/userP.png" />
@@ -11,6 +12,11 @@
 
         <div class="icon-container" *ngIf="post.username == username" (click)="notifications($event)" >
           <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
+
+        </div>
+        <div class="icon-container" *ngIf="post.username != username" (click)="follow(post.userId,post.username)" >
+          <ion-icon name="person-remove-outline" color="white" *ngIf="isFollowing(post.username)"></ion-icon>
+          <ion-icon name="person-add-outline" color="white" *ngIf="!isFollowing(post.username)"></ion-icon>
 
         </div>
 
@@ -42,7 +48,7 @@
 <!----->
 <ion-card *ngIf="post.postImageUrls[0]?.url.length <= 0">
   <div class="heading1">
-    <ion-avatar slot="start" class="avatar">
+    <ion-avatar slot="start" class="avatar" (click)="goProfile()">
       <img *ngIf="post.userProfilePhoto[0]?.url; else defaultImage" [src]="post.userProfilePhoto[0]?.url" />
       <ng-template #defaultImage>
         <img src="assets/img/userP.png" />
@@ -51,6 +57,11 @@
 
       <div class="icon-container" *ngIf="post.username == username" (click)="notifications($event)"  >
         <ion-icon name="ellipsis-horizontal-outline" color="white" ></ion-icon>
+
+      </div>
+      <div class="icon-container" *ngIf="post.username != username"  (click)="follow(post.userId,post.username)">
+        <ion-icon name="person-remove-outline" color="white" *ngIf="isFollowing(post.username)"></ion-icon>
+        <ion-icon name="person-add-outline" color="white" *ngIf="!isFollowing(post.username)"></ion-icon>
 
       </div>
 

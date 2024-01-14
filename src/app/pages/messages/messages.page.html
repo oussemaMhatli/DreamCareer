@@ -4,10 +4,8 @@
         <ion-row class="horizontal-scroll">
 
           <ion-col class="ami" >
-            <div *ngFor="let item of ami">
-              <ion-avatar class="avatar" >
-                <img alt="Silhouette of a person's head" src="assets/img/userP.png" />
-              </ion-avatar>
+            <div *ngFor="let item of followers">
+             <app-follower [follower]="item"></app-follower>
             </div>
 
 
@@ -18,7 +16,9 @@
 
   </div>
 </div>
-<div class="cnv-div-container">
-  <div class="cnv-div">
+<div style="margin-top:2vh" *ngFor="let item of cs">
+  <app-cs [cs]="item" ></app-cs>
+
 </div>
-</div>
+
+

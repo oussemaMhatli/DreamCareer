@@ -1,0 +1,7 @@
+<ion-avatar class="avatar" (click)="createOrGoConversation()">
+  <img alt="follower.username"  *ngIf="follower && follower.profilePhotoUrl && follower.profilePhotoUrl[0]?.url; else defaultImage" [src]="follower.profilePhotoUrl[0]?.url" />
+</ion-avatar>
+<ng-template #defaultImage>
+  <img src="assets/img/userP.png" class="header-img" />
+</ng-template>
+

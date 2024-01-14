@@ -30,11 +30,35 @@ export class UserService {
 
       return this.http.get<any>(url, { headers });
     }
+    getUserByUsernameOrId(userIdOrUsename: string,token:string): Observable<any> {
+      const headers = this.apiService.getHeaders(token);
+      const url = `${this.url}u/${userIdOrUsename}`;
+
+      return this.http.get<any>(url, { headers });
+    }
     getUserPosts(username: string,token:string,pagenumber:number): Observable<any> {
       const headers = this.apiService.getHeaders(token);
       const url = `${this.url}u/${username}/posts?page=${pagenumber}`;
 
       return this.http.get<any>(url, { headers });
+    }
+    getUserFollowings(userId: string,token:string): Observable<any> {
+      const headers = this.apiService.getHeaders(token);
+      const url = `${this.url}u/${userId}/followings`;
+
+      return this.http.get<any>(url, { headers });
+    }
+    getUserFollowers(userId: string,token:string): Observable<any> {
+      const headers = this.apiService.getHeaders(token);
+      const url = `${this.url}u/${userId}/followers`;
+
+      return this.http.get<any>(url, { headers });
+    }
+    followUnfollow(userId: string,token:string,fid:any): Observable<any> {
+      const headers = this.apiService.getHeaders(token);
+      const url = `${this.url}u/${userId}/followings`;
+
+      return this.http.patch<any>(url,fid ,{ headers });
     }
 
 }

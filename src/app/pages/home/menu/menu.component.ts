@@ -13,7 +13,7 @@ export class MenuComponent  implements OnInit {
     id:any;
     token:any;
     user:UserProfile=new UserProfile()
-
+    username:any
   constructor(public popoverCtrl: PopoverController
     ,private userService:UserService
     ,private router:Router,private modalController: ModalController) { }
@@ -22,16 +22,15 @@ export class MenuComponent  implements OnInit {
     this.id=localStorage.getItem("id");
     //const decodedToken = jwt_decode(this.token);
     this.token=localStorage.getItem("user")
-
+    this.username=localStorage.getItem("username")
     this.userService.getUser(this.id,this.token).subscribe(res=>{
-      console.log(res,"t7awalqqqqqt")
    this.user=res;
     })
 
 
   }
   goProfile(){
-    this.router.navigate(['home/profile'])
+    this.router.navigate(['home/profile',this.username])
     this.modalController.dismiss();
 
 

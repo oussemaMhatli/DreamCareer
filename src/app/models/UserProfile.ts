@@ -9,7 +9,7 @@ export class UserProfile {
   impressions!: number;
   location!: string;
   occupation!: string;
-  profilePhotoUrl!: string[]; // You can define a more specific type if needed
+  profilePhotoUrl!: any[]; // You can define a more specific type if needed
   updatedAt!: string;
   username!: string;
   viewedProfile!: number;

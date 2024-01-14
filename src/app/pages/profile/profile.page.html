@@ -1,9 +1,13 @@
-  <div class="container">
-    <img src="../../../assets/img/oussema.jpg" class="header-img" />
-    <div class="header-username">
-      <h2 class="username">{{ username }}</h2>
-    </div>
+<div class="container">
+  <img class="header-img" *ngIf="user && user.profilePhotoUrl && user.profilePhotoUrl[0]?.url; else defaultImage" [src]="user.profilePhotoUrl[0]?.url"/>
+  <ng-template #defaultImage>
+    <img src="assets/img/userP.png" class="header-img" />
+  </ng-template>
+  <div class="header-username">
+    <h2 class="username">{{ username }}</h2>
   </div>
+</div>
+
 
   <div class="posts-container">
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Post, PostResponse } from 'src/app/models/Posts';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
@@ -25,25 +27,45 @@ export class ProfilePage implements OnInit {
   constructor(
     private userService: UserService,
     private postService: PostsService,
-    private commentEventService: CommentEventService
+    private commentEventService: CommentEventService,
+    private router: ActivatedRoute,
+    private loadingController: LoadingController
+
   ) {}
   ngOnInit() {
+    this.presentLoading()
     this.id = localStorage.getItem('id');
     this.token = localStorage.getItem('user');
-    this.username= localStorage.getItem('username');
-    this.userService.getUser(this.id, this.token).subscribe(
+    this.username=this.router.snapshot.paramMap.get('username');
+
+this.getUser()
+    this.commentEventService.refreshEvent$.subscribe(() => {
+      this.getAllPosts();
+    });
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      // Other options if needed
+    });
+
+    await loading.present();
+  }
+
+  async dismissLoading() {
+    await this.loadingController.dismiss();
+  }
+  getUser(){
+    this.userService.getUserByUsernameOrId(this.username, this.token).subscribe(
       (res) => {
         this.user = res;
-
+        console.log('resUserachref',this.user)
         this.getAllPosts();
       },
       (error) => {
         console.error('Error fetching user:', error);
       }
     );
-    this.commentEventService.refreshEvent$.subscribe(() => {
-      this.getAllPosts();
-    });
   }
 
   getAllPosts() {
@@ -51,6 +73,7 @@ export class ProfilePage implements OnInit {
       console.log(res, 'posts');
       this.postResponse = res;
       this.posts = this.postResponse.posts;
+      this.dismissLoading()
     });
   }
 

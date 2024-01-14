@@ -1,0 +1,111 @@
+.container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 1vh;
+}
+.messages
+{
+  width: 95%;
+  height: 90%;
+  border-radius: 4.5vh;
+  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+
+}
+
+.body{
+  height: 70%;
+  overflow: auto;
+
+}
+.header{
+  height: 15%;
+  border-radius: 5vh;
+  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+background-color:  #d9f7fa;
+display: flex;
+justify-content: stretch;
+}
+.avatar{
+width: 20%;
+}
+.name
+{
+width: 65%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.end{
+width: 15%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.avatar1
+{
+  width: 13vh;
+  height: 13vh;
+  border: 3px solid #00CDE1;
+  margin-left: -0.5vh;
+  margin-top: -0.5vh;
+}
+.p-name
+{
+color: black;
+font-family: 'Roboto', sans-serif;
+font-size: 1.2em;
+
+}
+.inf
+{
+  color: #00CDE1;
+}
+.footer
+{
+height: 15%;
+border-radius: 4.5vh;
+//box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+display: flex;
+justify-content: stretch;
+}
+.input-cnt{
+width: 75%;
+display: flex;
+align-items: center;
+}
+.input{
+  width: 100%;
+  height: 7vh;
+  margin-left: 1vh;
+  border-radius: 4vh;
+  border: 1px solid #E0E0E0 ;
+  background-color:#EDEDED ;
+  box-shadow: inset -1px 0vh 3vh rgba(224, 224, 224, 0.7), inset 0 0vh 1vh rgba(224, 224, 224, 0.7);
+
+}
+.input::placeholder {
+color: #00CDE1;
+margin-left: 3vh; /* Adjust the margin-left value as needed */
+
+}
+
+.btn{
+background-color: #00CDE1;
+border-radius: 3vh;
+color: white;
+}
+.btn-cnt
+{
+  width: 20%;
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+}

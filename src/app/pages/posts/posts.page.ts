@@ -1,4 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Post, PostResponse } from 'src/app/models/Posts';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { CommentEventService } from 'src/app/services/comment-event-service.service';
@@ -24,9 +26,14 @@ Search:string=""
   constructor(
     private userService: UserService,
     private postService: PostsService,
-    private commentEventService: CommentEventService
+    private commentEventService: CommentEventService,
+    private loadingController: LoadingController,
+    private router:Router
   ) {}
   ngOnInit() {
+this.reload()
+  }
+  reload(){
     this.id = localStorage.getItem('id');
     this.token = localStorage.getItem('user');
 
@@ -43,14 +50,27 @@ Search:string=""
     this.commentEventService.refreshEvent$.subscribe(() => {
       this.getAllPosts();
     });
+     this.presentLoading();
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      // Other options if needed
+    });
+
+    await loading.present();
   }
 
+  async dismissLoading() {
+    await this.loadingController.dismiss();
+  }
   getAllPosts() {
     console.log(this.user.username, 'hhhhhh', this.token);
     this.postService.getPosts(this.token, this.pagenumber).subscribe((res) => {
       console.log(res, 'posts');
       this.postResponse = res;
       this.posts = this.postResponse.posts;
+      this.dismissLoading()
     });
   }
 
@@ -90,4 +110,24 @@ Search:string=""
     );
   }
   addPost(){}
+  @HostListener('pandown', ['$event'])
+  async onPan(event: any): Promise<void> {
+    await this.onPanDown();
+    this.reloadComponent()
+  }
+  reloadComponent() {
+    window.location.reload()
+  }
+  showSpinner = false;
+
+ async onPanDown() {
+    // Handle pan down event
+    this.showSpinner = true;
+    // Simulate some asynchronous task
+    await this.delay(2000); // Example: Wait for 2 seconds
+
+  }
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }
