@@ -1,5 +1,5 @@
 ce qui manque dans post
-like:change username because static
-comments:solve like and delete update 
-post:update add
-profile picture :profile
+comments:solve like and delete update :return 502
+post:update add :how to pass image
+socket: access denied
+keyboard :resize must be none

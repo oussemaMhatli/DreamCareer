@@ -8,7 +8,7 @@ import { ComentsModalComponent } from 'src/app/Component/Modal/coments-modal/com
 import { CommentsService } from 'src/app/services/comments.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { PostSettingComponent } from 'src/app/Component/settings/post-setting/post-setting.component';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { FollowRequest } from 'src/app/models/FollowRequest';
@@ -43,10 +43,9 @@ export class PostComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-  console.log(this.post)
+  console.log(this.post,"onepost")
     this.onePost=this.post
     this.id=localStorage.getItem("id")
-    console.log("loula",this.onePost)
     this.likeslength=this.getLikeCount(this.post);
    this.paragraph=this.post.caption;
    this.username=localStorage.getItem("username")
@@ -64,10 +63,8 @@ this.closePopover()
   searchLiked(post: Post, username: any) {
    if(post.likes && post.likes[username]){
     this.liked=true
-    console.log("xxxxxxxxxxxxxxxx")
    }else{
     this.liked=false
-    console.log("yyyyyyyyyyyyyyyyyy")
 
    }
   }
@@ -80,7 +77,6 @@ this.closePopover()
     return this.showFullParagraph ? 'Read less' : 'Read more';
   }
   getLikeCount(p:any): number {
-console.log('count', Object.values(p.likes).filter((liked) => liked).length)
 this.likeslength=Object.values(p.likes).filter((liked) => liked).length
     return Object.values(p.likes).filter((liked) => liked).length;
   }
@@ -115,7 +111,6 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
     const obj={
       "username":this.username
     }
-    console.log("thi",this.username)
     this.liked=!this.liked;
     this.postService.like(this.token,this.post._id,obj).subscribe(res=>{
       this.onePost=res;
@@ -154,7 +149,6 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
     getFolowingsUser(){
       this.userService.getUserFollowings(this.id,this.token).subscribe(res=>{
         this.followings=res
-        console.log("jfoun",this.followings,"jfoun")
 
       })
     }
@@ -163,7 +157,6 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
       // Ensure that this.followings is an array
       if (Array.isArray(this.followings)) {
         // Check if the username is found in this.followings
-        console.log("ahhhhhh",this.followings.some(user => user.username === username))
         return this.followings.some(user => user.username === username);
       } else {
         console.error("Followings array is not properly initialized.");
@@ -174,7 +167,6 @@ this.likeslength=Object.values(p.likes).filter((liked) => liked).length
      let obj={
        "followingId":fid
       }
-      console.log(fid)
       this.userService.followUnfollow(this.id,this.token,obj).subscribe(res=>{
         this.getFolowingsUser()
       })

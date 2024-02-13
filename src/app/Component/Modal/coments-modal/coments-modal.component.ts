@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Coment, ComentBody } from 'src/app/models/Comment';
 import { User } from 'src/app/models/User';
 import { UserProfile } from 'src/app/models/UserProfile';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { CommentsService } from 'src/app/services/comments.service';
 import { UserService } from 'src/app/services/user.service';
 

@@ -3,6 +3,7 @@
   margin-top: 4vh;
   z-index: 1;
   overflow-y: scroll;
+
 }
 .search-container-center{
   display: flex;
@@ -31,6 +32,18 @@
   margin-top: 2vh;
 
 }
+.addPostCard-keyboard
+{
+  border-radius: 8vh;
+  height: 40%;
+  box-shadow: 0 2vh 7vh rgba(0, 0, 0, 0.1), 0 0vh 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2vh;
+
+}
+
 ion-avatar{
   border:0.5vh solid   #00CDE1;
   width: 12vh;

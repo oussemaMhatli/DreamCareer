@@ -13,7 +13,7 @@ import { SettingMenuComponent } from './setting-menu/setting-menu.component';
 import { PostsPageModule } from '../posts/posts.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ProfilePageModule } from '../profile/profile.module';
-import { PostComponent } from '../posts/post/post.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { PostComponent } from '../posts/post/post.component';
     DragDropModule,
     HomePageRoutingModule,
     PostsPageModule,
-    ProfilePageModule
+    ProfilePageModule,
+    ScrollingModule
 
   ],
 })

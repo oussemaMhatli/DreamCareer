@@ -5,7 +5,7 @@ import { ComentsModalComponent } from 'src/app/Component/Modal/coments-modal/com
 import { ImageModalComponent } from 'src/app/Component/Modal/image-modal/image-modal.component';
 import { PostSettingComponent } from 'src/app/Component/settings/post-setting/post-setting.component';
 import { Post } from 'src/app/models/Posts';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { CommentsService } from 'src/app/services/comments.service';
 
 @Component({
@@ -24,6 +24,6 @@ update(){
 
 }
 report(){
-  
+
 }
 }

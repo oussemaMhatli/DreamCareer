@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CommentEventServiceService } from './comment-event-service.service';
+import { CommentEventServiceService } from './Events/comment-event-service.service';
 
 describe('CommentEventServiceService', () => {
   let service: CommentEventServiceService;

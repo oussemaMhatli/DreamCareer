@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 
 @Injectable({
@@ -9,6 +9,8 @@ export class SocketService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
   public connectionStatus$: BehaviorSubject<string> = new BehaviorSubject('Disconnected');
   private socket!: Socket;
+  private newMessageEvent$: Subject<void> = new Subject<void>();
+
 
   constructor() {
     this.setupWebSocketConnection();
@@ -19,7 +21,7 @@ export class SocketService {
 
     const authToken = `Bearer ${token}`; // Replace with your actual token
     const socketOptions = {
-      transports: ['websocket'],
+      transports: ['websocket','polling'],
       auth: {
         token: authToken,
       },
@@ -41,6 +43,15 @@ export class SocketService {
       console.error('WebSocket error:', error);
       this.connectionStatus$.next('Error: Unable to connect');
     });
+
+      // Assuming this.socket is your WebSocket instance
+      this.socket.on('getMessage', ({ sender, content }) => {
+        this.message$.next(content);
+        // Trigger the new message event
+        console.log('msgabdou',content)
+        this.newMessageEvent$.next();
+      });
+
   }
 
   public sendMessage(message: any) {
@@ -53,17 +64,27 @@ export class SocketService {
   }
 
   public getMessages(): Observable<any> {
+
     return new Observable((observer) => {
-      this.socket.on('getMessage', (data) => {
-        observer.next(data);
-        console.log('New event received:', data);
+      this.socket.on('getMessage', ({ sender, content }) => {
+        observer.next(sender);
+        console.log('New event received:', sender);
       });
 
-      return () => {
-        this.socket.disconnect();
-      };
+
     });
+
+
+  }
+  sendMessage1(message: string){
+    this.socket.emit('sendMessage', message);
   }
 
+  public getNewMessages1 = () => {
+    this.socket.on('getMessage', (message) =>{
+      this.message$.next(message);
+    });
 
+    return this.message$.asObservable();
+  };
 }

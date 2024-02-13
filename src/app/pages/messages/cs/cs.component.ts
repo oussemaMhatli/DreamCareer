@@ -77,7 +77,7 @@ this.userService.getUserByUsernameOrId(id,this.token).subscribe(res=>{
   })
   }
   goMessage(){
-    this.route.navigate(['/home/msg/message', this.cs._id]);
+    this.route.navigate(['/home/msg/message', this.cs._id,this.followerId]);
 
   }
 }

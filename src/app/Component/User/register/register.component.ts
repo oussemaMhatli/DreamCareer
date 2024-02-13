@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
@@ -97,5 +97,25 @@ this.service.register(this.registerInput).subscribe( async (res:any)=>{
 
     });
     toast.present();
+  }
+  @HostListener('pandown', ['$event'])
+  async onPan(event: any): Promise<void> {
+    await this.onPanDown();
+    this.reloadComponent()
+  }
+  reloadComponent() {
+    window.location.reload()
+  }
+  showSpinner = false;
+
+ async onPanDown() {
+    // Handle pan down event
+    this.showSpinner = true;
+    // Simulate some asynchronous task
+    await this.delay(2000); // Example: Wait for 2 seconds
+
+  }
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

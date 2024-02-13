@@ -1,43 +1,54 @@
 <div class="container">
-<div class="messages">
-<div class="header">
-  <div class="avatar">
-    <ion-avatar class="avatar1" >
-      <img alt="follower.username"  src="assets/img/oussema.jpg" />
-    </ion-avatar>
-    <ng-template #defaultImage>
-      <img src="assets/img/userP.png" class="header-img" />
-    </ng-template>
+  <div class="messages">
+    <div class="header">
+      <div class="avatar">
+        <ion-avatar class="avatar1" (click)="goProfile()">
+          <img alt="follower.username"  *ngIf="follower && follower.profilePhotoUrl && follower.profilePhotoUrl[0]?.url; else defaultImage" [src]="follower.profilePhotoUrl[0]?.url"/>
+        </ion-avatar>
+        <ng-template #defaultImage (click)="goProfile()">
+          <img src="assets/img/userP.png" class="header-img" />
+        </ng-template>
+      </div>
+      <div class="name">
+        <p class="p-name">{{ follower.username|uppercaseFirst }}</p>
+      </div>
+      <div class="end">
+        <ion-icon
+          name="information-circle-outline"
+          size="large"
+          class="inf"
+        ></ion-icon>
+      </div>
+    </div>
+
+    <div class="body">
+<section >
+        <div class="container" >
+
+          <div class="row d-flex justify-content-center">
 
 
+        <div *ngFor="let message of messages| conversation: Search;">
+
+        <app-onemsg [msg]='message' [follower]="follower" [user]="user" ></app-onemsg>
+                </div>
+
+
+                </div>
+
+            </div>
+          </section>
+
+    </div>
+    <div class="footer">
+      <div class="input-cnt">
+        <input type="text" class="input" placeholder="Message" [(ngModel)]="msgContent"/>
+        <ion-icon name="camera-outline" size="large"></ion-icon>
+        <ion-icon name="mic-outline" size="large"></ion-icon>
+      </div>
+      <div class="btn-cnt">
+        <button class="btn" (click)="addMessage()">save</button>
+      </div>
+    </div>
   </div>
-  <div class="name">
-
-    <p class="p-name">Mhatli Oussema</p>
-  </div>
-  <div class="end">
-    <ion-icon name="information-circle-outline" size="large" class="inf"></ion-icon>
-
-  </div>
-</div>
-
-
-
-
-<div class="body">
-
-</div>
-<div class="footer">
-<div class="input-cnt">
-<input type="text" class="input" placeholder="Message" />
-</div>
-<div class="btn-cnt">
-<button class="btn">save</button>
-</div>
-
-
-</div>
-
-
-</div>
 </div>

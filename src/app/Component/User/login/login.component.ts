@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Keyboard } from '@capacitor/keyboard';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
@@ -25,9 +26,22 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*\W).{4,}$/)]],
     });
+    Keyboard.addListener('keyboardDidShow', () => {
+      this.adjustLayoutForKeyboard(true);
+    });
 
+    // Subscribe to keyboard hide event
+    Keyboard.addListener('keyboardDidHide', () => {
+      this.adjustLayoutForKeyboard(false);
+    });
   }
-
+  adjustLayoutForKeyboard(keyboardIsOpen: boolean) {
+    const yourPageContent = document.querySelector('.your-page-content') as HTMLElement;
+    if (yourPageContent) {
+      yourPageContent.style.height = keyboardIsOpen ? '100%' : 'calc(100vh - 0px)';
+      yourPageContent.style.overflow = keyboardIsOpen ? 'hidden' : 'auto';
+    }
+  }
   @HostListener('pandown', ['$event'])
   async onPan(event: any): Promise<void> {
     this.onPanDown()

@@ -1,0 +1,32 @@
+
+
+<div class="d-flex flex-row justify-content-start mb-4" *ngIf="msg.sender == id" >
+  <img *ngIf="follower && follower.profilePhotoUrl && follower.profilePhotoUrl[0]?.url; else defaultImage" [src]="follower.profilePhotoUrl[0]?.url"
+    alt="avatar 1"class="img-avatar"  >
+    <ng-template #defaultImage>
+      <img src="assets/img/userP.png" class="img-avatar" />
+    </ng-template>
+  <div class="p-3 ms-3 content" (click)="showTime()">
+    <p class="small mb-0"> {{msg.content}}</p>
+
+  </div>
+
+</div>
+<div class="times">  <p class="small mb-0" *ngIf="time"> {{ formatTimeDifference(msg.updatedAt) }}</p>
+</div>
+
+
+
+
+
+<div class="d-flex flex-row justify-content-end mb-4" *ngIf="msg.sender == fid"  >
+  <div class="p-3 me-3 border content-right" (click)="showTime()">
+    <p class="small mb-0"> {{msg.content}}</p>
+  </div>
+
+  <img *ngIf="follower && follower.profilePhotoUrl && follower.profilePhotoUrl[0]?.url; else defaultImage" [src]="follower.profilePhotoUrl[0]?.url"
+    alt="avatar 1" class="img-avatar" >
+    <ng-template #defaultImage>
+      <img src="assets/img/oussema.jpg" class="img-avatar" />
+    </ng-template>
+</div>

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Post, PostResponse } from 'src/app/models/Posts';
 import { UserProfile } from 'src/app/models/UserProfile';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,7 +20,7 @@ export class ProfilePage implements OnInit {
   id: any;
   token: any;
   user: UserProfile = new UserProfile();
-  posts!: Post[];
+  posts: Post[]=[];
   postResponse: PostResponse = new PostResponse();
   postCaption!:string
   username:any
@@ -113,4 +113,24 @@ this.getUser()
     );
   }
   addPost(){}
+  @HostListener('pandown', ['$event'])
+  async onPan(event: any): Promise<void> {
+    await this.onPanDown();
+    this.reloadComponent()
+  }
+  reloadComponent() {
+    window.location.reload()
+  }
+  showSpinner = false;
+
+ async onPanDown() {
+    // Handle pan down event
+    this.showSpinner = true;
+    // Simulate some asynchronous task
+    await this.delay(2000); // Example: Wait for 2 seconds
+
+  }
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }

@@ -7,7 +7,7 @@ import { SettingMenuComponent } from 'src/app/pages/home/setting-menu/setting-me
 import { CommentsService } from 'src/app/services/comments.service';
 import { UserService } from 'src/app/services/user.service';
 import { ComentSettingComponent } from '../../settings/coment-setting/coment-setting.component';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 
 @Component({
   selector: 'app-comment',

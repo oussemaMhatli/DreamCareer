@@ -13,6 +13,11 @@ import { CsComponent } from './cs/cs.component';
 import { UppercaseFirstPipe } from 'src/app/pipes/uppercase-first.pipe';
 import { SocketConfigService } from 'src/app/services/messages/socket-config.service';
 import { SocketService } from 'src/app/services/messages/socket.service';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { OnemsgComponent } from './onemsg/onemsg.component';
+import { ConversationPipe } from 'src/app/pipes/conversation.pipe';
+
+
 
 @NgModule({
   imports: [
@@ -22,10 +27,12 @@ import { SocketService } from 'src/app/services/messages/socket.service';
     MessagesPageRoutingModule,
 
 
+
   ],
   declarations: [MessagesPage,FollowerComponent,MsgComponent,
     CsComponent,
     UppercaseFirstPipe,
+    OnemsgComponent,ConversationPipe
   ]
 })
 export class MessagesPageModule {}

@@ -1,3 +1,4 @@
+  <ion-card class="ion-no-margin">
 <div class="posts-container">
   <div class="spinner">
     <ion-spinner *ngIf="showSpinner" name="crescent" style="color: #00cde1;margin-top: 2vh;"></ion-spinner>
@@ -14,6 +15,7 @@
           class="icon-filter custom-icon-center"
           size="large"
           #iconSearch
+          keyboard-attach
         ></ion-icon>
       </div>
     </div>
@@ -22,14 +24,16 @@
     <div class="container-fluid gedf-wrapper">
       <div class="row">
           <!--- \\\\\\\Post-->
-          <div class="addPostCard">
+          <div class="addPostCard" #addPostCard>
             <div class="avatar">
               <ion-avatar>
                 <img
                   alt="Silhouette of a person's head"
-                  src="assets/img/userP.png"
-                />
+                  *ngIf="user && user.profilePhotoUrl && user.profilePhotoUrl[0]?.url; else defaultImages" [src]="user.profilePhotoUrl[0]?.url"                  />
               </ion-avatar>
+              <ng-template #defaultImages>
+                <img src="assets/img/userP.png" />
+              </ng-template>
               <div class="inputPostContainer">
               <textarea
                 type="text"
@@ -53,8 +57,11 @@
 
 
 
-
+        <ng-container *ngIf="(posts | post: Search).length === 0">
+          <img src="assets/img/notfound.jpg" alt="No Results Found" class="no-results-image">
+        </ng-container>
         <ng-container *ngFor="let post of posts|post: Search">
+
           <app-post [post]="post"></app-post>
         </ng-container>
       </div>
@@ -66,3 +73,4 @@
     loadingText="Loading more data..."
   ></ion-infinite-scroll-content>
 </ion-infinite-scroll>
+</ion-card>

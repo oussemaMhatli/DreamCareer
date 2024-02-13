@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: MessagesPage
   },
-  {        path: 'message/:id',component:MsgComponent
+  {        path: 'message/:id/:fid',component:MsgComponent
 }
 ];
 

@@ -5,7 +5,7 @@
   <ion-avatar slot="start">
     <img *ngIf="comment.userProfilePhoto[0]?.url; else defaultImage" [src]="comment.userProfilePhoto[0]?.url" />
     <ng-template #defaultImage>
-      <img src="assets/img/oussema.jpg" />
+      <img src="assets/img/userP.png" />
     </ng-template>
     </ion-avatar>
     <p class="timestamp"> <ion-icon name="time"></ion-icon>{{ formatTimeDifference(comment.createdAt) }}</p>

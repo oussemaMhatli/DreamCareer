@@ -11,6 +11,8 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
+import { SearchEventService } from 'src/app/services/Events/search-event.service';
+import { Keyboard } from '@capacitor/keyboard';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -28,11 +30,9 @@ export class NavbarComponent implements OnInit {
     const searchContainerElement: HTMLElement = this.searchContainerRef.nativeElement;
 
     // Now you can manipulate the element as needed
-    console.log(searchContainerElement);
     const iconSearchElement: HTMLElement = this.iconSearchRef.nativeElement;
 
     // Now you can manipulate the element as needed
-    console.log(this.searchBarRef.nativeElement ,"ionic");
   }
 
 
@@ -40,6 +40,8 @@ export class NavbarComponent implements OnInit {
     token:any;
     user:UserProfile=new UserProfile()
   open:boolean=true
+  private searchInputEventListener!: EventListener;
+
   constructor(public popoverCtrl: PopoverController,
     private modalController: ModalController,
     private userService:UserService,
@@ -47,13 +49,15 @@ export class NavbarComponent implements OnInit {
     public zone: NgZone,
     public navCtrl: NavController,
     private cdr: ChangeDetectorRef,
-    private router:Router
+    private router:Router,
+    private searchInputService: SearchEventService,
     ) { }
 
   ngOnInit() {
 
 
   }
+
   async openUpdateModal() {
     this.open=!this.open
 
@@ -90,8 +94,8 @@ this.closeModal()
   drop(event: CdkDragDrop<string[]>) {
 
     moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
-      console.log("fff",event.currentIndex)
-
+      const searchInputElement: HTMLInputElement = this.searchBarRef.nativeElement.querySelector('input');
+      searchInputElement.removeEventListener('input', this.handleInputChange);
       if(event.currentIndex==0){
         this.router.navigate(['home/leadbord'])
 
@@ -105,7 +109,6 @@ this.closeModal()
         this.renderer.removeClass(this.searchBarRef.nativeElement, 'custom-searchbar');
 
         this.renderer.addClass(this.searchBarRef.nativeElement, 'custom-searchbar-side');
-
 
     }
       else if(event.currentIndex==1){
@@ -127,6 +130,8 @@ this.closeModal()
         this.renderer.removeClass(this.searchBarRef.nativeElement, 'custom-searchbar');
 
         this.renderer.addClass(this.searchBarRef.nativeElement, 'custom-searchbar-side');
+        const searchInputElement: HTMLInputElement = this.searchBarRef.nativeElement.querySelector('input');
+        searchInputElement.addEventListener('input', this.handleInputChange);
 
       }
 
@@ -135,6 +140,11 @@ this.closeModal()
     this.router.navigate(['home/posts'])
 
   }
+  handleInputChange = (event: Event) => {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.searchInputService.updateSearchInput(inputValue);
 
+
+  };
 
 }

@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
+import { Component, ElementRef, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { Keyboard } from '@capacitor/keyboard';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Post, PostResponse } from 'src/app/models/Posts';
 import { UserProfile } from 'src/app/models/UserProfile';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,6 +17,7 @@ export class PostsPage implements OnInit {
   pagenumber: number = 1;
 Search:string=""
   isFileHidden: boolean = true;
+  @ViewChild('addPostCard', { static: true }) addPostCard!: ElementRef;
 
   id: any;
   token: any;
@@ -23,14 +25,36 @@ Search:string=""
   posts: Post[]=[];
   postResponse: PostResponse = new PostResponse();
   postCaption!:string
+
+
   constructor(
     private userService: UserService,
     private postService: PostsService,
     private commentEventService: CommentEventService,
     private loadingController: LoadingController,
-    private router:Router
-  ) {}
+    private router:Router,
+    private toastController: ToastController,
+
+  ) {
+
+
+  }
+
+
+
+
+
+  async showToasts(msg:string,color:string) {
+    const toast = await this.toastController.create({
+        message: msg,
+        duration: 3000,
+        color: color,
+
+    });
+    toast.present();
+  }
   ngOnInit() {
+
 this.reload()
   }
   reload(){
@@ -65,9 +89,7 @@ this.reload()
     await this.loadingController.dismiss();
   }
   getAllPosts() {
-    console.log(this.user.username, 'hhhhhh', this.token);
     this.postService.getPosts(this.token, this.pagenumber).subscribe((res) => {
-      console.log(res, 'posts');
       this.postResponse = res;
       this.posts = this.postResponse.posts;
       this.dismissLoading()
@@ -77,7 +99,6 @@ this.reload()
   showFileInput() {
     //this.fileInput.nativeElement.click();
     this.isFileHidden = !this.isFileHidden;
-    console.log(this.isFileHidden);
   }
 
   handleFileInput(event: any) {

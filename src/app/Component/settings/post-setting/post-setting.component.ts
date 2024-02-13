@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoadingController, ModalController, ToastController } from '@ionic/angular';
-import { CommentEventService } from 'src/app/services/comment-event-service.service';
+import { CommentEventService } from 'src/app/services/Events/comment-event-service.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 

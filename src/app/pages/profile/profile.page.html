@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="spinner">
+      <ion-spinner *ngIf="showSpinner" name="crescent" style="color: #00cde1;margin-top: 2vh;"></ion-spinner>
+
+
+  </div>
   <img class="header-img" *ngIf="user && user.profilePhotoUrl && user.profilePhotoUrl[0]?.url; else defaultImage" [src]="user.profilePhotoUrl[0]?.url"/>
   <ng-template #defaultImage>
     <img src="assets/img/userP.png" class="header-img" />
@@ -20,9 +25,11 @@
                 <ion-avatar>
                   <img
                     alt="Silhouette of a person's head"
-                    src="assets/img/userP.png"
-                  />
+                    *ngIf="user && user.profilePhotoUrl && user.profilePhotoUrl[0]?.url; else defaultImages" [src]="user.profilePhotoUrl[0]?.url"                  />
                 </ion-avatar>
+                <ng-template #defaultImages>
+                  <img src="assets/img/userP.png" />
+                </ng-template>
                 <div class="inputPostContainer">
                 <textarea
                   type="text"
@@ -51,12 +58,13 @@
             <app-postprofile [post]="post"></app-postprofile>
 
           </ng-container>
+          <img src="assets/img/notfound.jpg" *ngIf="(posts?.length ?? 0) === 0" />
         </div>
       </div>
     </div>
   </div>
-  <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
-    <ion-infinite-scroll-content
+  <ion-infinite-scroll (ionInfinite)="loadMoreData($event)" style="--color:#00CDE1 ;">
+    <ion-infinite-scroll-content style="--color:#00CDE1 ;"
       loadingText="Loading more data..."
     ></ion-infinite-scroll-content>
   </ion-infinite-scroll>

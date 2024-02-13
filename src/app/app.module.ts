@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy} from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,14 +27,18 @@ import { CsComponent } from './pages/messages/cs/cs.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './services/messages/socket.service';
 import { SocketConfigService } from './services/messages/socket-config.service';
+import { ConversationPipe } from './pipes/conversation.pipe';
 
 export class MyHammerConfig extends HammerGestureConfig {
   override overrides = {
     swipe: { direction: Hammer.DIRECTION_DOWN }
   };
 }
-const config: SocketIoConfig = { url: 'wss://dreamcareer.onrender.com', options: {} };
+const config: SocketIoConfig = { url: 'wss://dreamcareer.onrender.com', options: {
+    transports: ['websocket'],
 
+
+} };
 
 @NgModule({
   declarations: [
@@ -48,7 +52,8 @@ const config: SocketIoConfig = { url: 'wss://dreamcareer.onrender.com', options:
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(
+    IonicModule.forRoot({
+    }
       ),
     AppRoutingModule,
     ReactiveFormsModule,
@@ -61,6 +66,7 @@ const config: SocketIoConfig = { url: 'wss://dreamcareer.onrender.com', options:
      LeadboardPageModule,
      MessagesPageModule,
       HammerModule,
+      SocketIoModule.forRoot(config),
 
 
 ],
@@ -68,7 +74,8 @@ const config: SocketIoConfig = { url: 'wss://dreamcareer.onrender.com', options:
   ,
 
 },
-{ provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
+{ provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
+
 
 ],
   bootstrap: [AppComponent],

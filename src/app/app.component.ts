@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { SocketService } from './services/messages/socket.service';
-import { Subscription } from 'rxjs';
+import { Keyboard, KeyboardResize } from '@capacitor/keyboard';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,27 @@ import { Subscription } from 'rxjs';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  constructor() {
+    this.initializeApp();
 
+  }
+  ngOnInit(){
+    Keyboard.addListener('keyboardWillShow', info => {
+      alert('keyboard will show with height:');
+      
+    });
+  }
 
+  initializeApp() {
+    // Wait for Capacitor to be ready
+    document.addEventListener('deviceready', () => {
+      // Disable keyboard resizing
+      Keyboard.setResizeMode({
+        mode: KeyboardResize.None
+      }).catch(error => {
+        console.error('Error setting keyboard resize mode:', error);
+      });
+    });
+  }
 
 }

@@ -1,7 +1,9 @@
 {
-    "plugins": {
-      "Keyboard": {
-        "resize": "body"
-      }
+  "plugins": {
+    "Keyboard": {
+      "resize": "none",
+      "style": "DARK",
+      "resizeOnFullScreen": true
     }
   }
+}
