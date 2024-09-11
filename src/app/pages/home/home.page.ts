@@ -32,19 +32,7 @@ throw new Error('Method not implemented.');
       info.keyboardHeight + 'px';
     });
   }
-//   handleScroll(event: CustomEvent) {
-//     const currentY = event.detail.scrollTop;
 
-//     if (Math.abs(currentY - this.lastY) > this.threshold) {
-//       if (currentY > this.lastY) {
-//         this.hideNavbarElement.emit(true);
-//       } else {
-//         this.hideNavbarElement.emit(false);
-//       }
-
-//       this.lastY = currentY;
-//     }
-//   }
 configureKeyboard() {
   // Disable content resizing when the keyboard is opened
   const disableResizeOptions: KeyboardResizeOptions = {
